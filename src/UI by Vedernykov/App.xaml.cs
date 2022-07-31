@@ -5,6 +5,7 @@ using Prism.Unity;
 using UI_by_Vedernykov.ViewModels;
 using UI_by_Vedernykov.ViewModels.Mobile;
 using UI_by_Vedernykov.Views;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace UI_by_Vedernykov
@@ -36,11 +37,14 @@ namespace UI_by_Vedernykov
 
             //ViewModels
             containerRegistry.RegisterSingleton<GradientViewViewModel>();
+            containerRegistry.RegisterSingleton<VersionTrackingViewViewModel>();
         }
 
         protected override async void OnInitialized()
         {
             InitializeComponent();
+
+            VersionTracking.Track();
 
             App.Current.UserAppTheme = OSAppTheme.Dark;
 

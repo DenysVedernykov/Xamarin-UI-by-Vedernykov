@@ -38,6 +38,7 @@
     <Label
         Text="Completing one entry will bring focus to the next entry."
         TextColor="{DynamicResource TextAndBackgroundColor_i1}"
+        Margin="0, 50, 0, 0"
         HorizontalTextAlignment="Center"/>
 
     <pancakeview:PancakeView

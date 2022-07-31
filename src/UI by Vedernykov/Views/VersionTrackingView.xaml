@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:UI_by_Vedernykov.ViewModels"
+    Padding="25"
+    BackgroundColor="{DynamicResource TextAndBackgroundColor_i14}"
+    x:Class="UI_by_Vedernykov.Views.VersionTrackingView"
+    x:DataType="viewmodels:VersionTrackingViewViewModel">
+
+    <StackLayout.Resources>
+
+        <Style x:Key="LabelStyle_i1" TargetType="Label">
+            <Setter Property="Margin" Value="15, 5, 0, 0"/>
+            <Setter Property="TextColor" Value="{DynamicResource TextAndBackgroundColor_i1}"/>
+        </Style>
+        
+    </StackLayout.Resources>
+
+    <Label
+        Text="Version Tracking"
+        TextColor="{DynamicResource TextAndBackgroundColor_i11}"
+        FontSize="Large"
+        Margin="0, 0, 0, 15"/>
+
+    <Label Style="{DynamicResource LabelStyle_i1}">
+
+        <Label.FormattedText>
+            <FormattedString>
+                <Span Text="Is First Launch Ever: "/>
+                <Span Text="{Binding IsFirstLaunchEver}" TextColor="{DynamicResource IndicationColor_i1}"/>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+
+    <Label Style="{DynamicResource LabelStyle_i1}">
+
+        <Label.FormattedText>
+            <FormattedString>
+                <Span Text="Is First Launch For Current Version: "/>
+                <Span Text="{Binding IsFirstLaunchForCurrentVersion}" TextColor="{DynamicResource IndicationColor_i1}"/>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+
+    <Label Style="{DynamicResource LabelStyle_i1}">
+
+        <Label.FormattedText>
+            <FormattedString>
+                <Span Text="Is First Launch For Current Build: "/>
+                <Span Text="{Binding IsFirstLaunchForCurrentBuild}" TextColor="{DynamicResource IndicationColor_i1}"/>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+
+    <Label Style="{DynamicResource LabelStyle_i1}">
+
+        <Label.FormattedText>
+            <FormattedString>
+                <Span Text="Current Version: "/>
+                <Span Text="{Binding CurrentVersion}" TextColor="{DynamicResource IndicationColor_i1}"/>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+
+    <Label Style="{DynamicResource LabelStyle_i1}">
+
+        <Label.FormattedText>
+            <FormattedString>
+                <Span Text="Current Build: "/>
+                <Span Text="{Binding CurrentBuild}" TextColor="{DynamicResource IndicationColor_i1}"/>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+
+    <Label Style="{DynamicResource LabelStyle_i1}">
+
+        <Label.FormattedText>
+            <FormattedString>
+                <Span Text="Previous Version: "/>
+                <Span Text="{Binding PreviousVersion}" TextColor="{DynamicResource IndicationColor_i1}"/>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+
+    <Label Style="{DynamicResource LabelStyle_i1}">
+
+        <Label.FormattedText>
+            <FormattedString>
+                <Span Text="Previous Build: "/>
+                <Span Text="{Binding PreviousBuild}" TextColor="{DynamicResource IndicationColor_i1}"/>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+
+    <Label Style="{DynamicResource LabelStyle_i1}">
+
+        <Label.FormattedText>
+            <FormattedString>
+                <Span Text="First Installed Version: "/>
+                <Span Text="{Binding FirstInstalledVersion}" TextColor="{DynamicResource IndicationColor_i1}"/>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+
+    <Label Style="{DynamicResource LabelStyle_i1}">
+
+        <Label.FormattedText>
+            <FormattedString>
+                <Span Text="First Installed Build: "/>
+                <Span Text="{Binding FirstInstalledBuild}" TextColor="{DynamicResource IndicationColor_i1}"/>
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+
+    <Label
+        Style="{DynamicResource LabelStyle_i1}"
+        Text="Version History:"/>
+
+    <StackLayout BindableLayout.ItemsSource="{Binding VersionHistory}">
+
+        <BindableLayout.ItemTemplate>
+            <DataTemplate x:DataType="{x:Type x:String}">
+                
+                <Label
+                    Style="{DynamicResource LabelStyle_i1}"
+                    TextColor="{DynamicResource IndicationColor_i1}"
+                    Text="{Binding .}"/>
+                
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+        
+    </StackLayout>
+
+    <Label
+        Style="{DynamicResource LabelStyle_i1}"
+        Text="Build History:"/>
+
+    <StackLayout BindableLayout.ItemsSource="{Binding BuildHistory}">
+
+        <BindableLayout.ItemTemplate>
+            <DataTemplate x:DataType="{x:Type x:String}">
+                
+                <Label
+                    Style="{DynamicResource LabelStyle_i1}"
+                    TextColor="{DynamicResource IndicationColor_i1}"
+                    Text="{Binding .}"/>
+                
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+        
+    </StackLayout>
+
+</StackLayout>

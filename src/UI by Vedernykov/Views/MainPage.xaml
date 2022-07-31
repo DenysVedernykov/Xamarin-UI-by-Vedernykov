@@ -30,8 +30,12 @@
                 <mobileViews:SetFocusOnEntryCompletedView/>
             </sc:StateCondition>
 
-            <sc:StateCondition State="{x:Static enums:EPages.Gradient}">
+            <sc:StateCondition State="{x:Static enums:EPages.Gradients}">
                 <mobileViews:GradientView BindingContext="{Binding GradientViewViewModel}"/>
+            </sc:StateCondition>
+
+            <sc:StateCondition State="{x:Static enums:EPages.VersionTracking}">
+                <views:VersionTrackingView BindingContext="{Binding VersionTrackingViewViewModel}"/>
             </sc:StateCondition>
 
         </sc:StateContainer>

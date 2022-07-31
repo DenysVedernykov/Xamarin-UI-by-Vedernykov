@@ -137,5 +137,8 @@
 	  <EmbeddedResource Update="Views\Mobile\SetFocusOnEntryCompletedView.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
+	  <EmbeddedResource Update="Views\VersionTrackingView.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
 	</ItemGroup>
 </Project>

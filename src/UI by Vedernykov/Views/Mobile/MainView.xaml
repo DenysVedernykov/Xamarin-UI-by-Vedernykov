@@ -6,18 +6,6 @@
     BackgroundColor="{DynamicResource TextAndBackgroundColor_i14}"
     x:Class="UI_by_Vedernykov.Views.Mobile.MainView">
 
-    <StackLayout Orientation="Horizontal">
-        
-        <Button
-            Style="{DynamicResource BaseMenuButtonStyle}"
-            Text="Left menu"/>
-
-        <Button
-            Style="{DynamicResource BaseMenuButtonStyle}"
-            Text="Right menu"/>
-
-    </StackLayout>
-
     <Label
         Text="Main view"
         TextColor="{DynamicResource TextAndBackgroundColor_i1}"

@@ -5,6 +5,7 @@
         NotSelected,
         Main,
         SetFocusOnEntryCompleted,
-        Gradient,
+        Gradients,
+        VersionTracking,
     }
 }

@@ -17,10 +17,12 @@ namespace UI_by_Vedernykov.ViewModels
 
         public MainPageViewModel(
             GradientViewViewModel gradientViewViewModel,
+            VersionTrackingViewViewModel versionTrackingViewViewModel,
             INavigationService navigationService)
             : base(navigationService)
         {
             GradientViewViewModel = gradientViewViewModel;
+            VersionTrackingViewViewModel = versionTrackingViewViewModel;
 
             _selectedMenuItemCommand = new AsyncCommand(OnSelectedMenuItemCommand, allowsMultipleExecutions: false);
             _showAboutAppPageCommand = new AsyncCommand(OnShowAboutAppPageCommand, allowsMultipleExecutions: false);
@@ -41,8 +43,14 @@ namespace UI_by_Vedernykov.ViewModels
                 },
                 new()
                 {
-                    State = EPages.Gradient,
+                    State = EPages.Gradients,
                     Title = "Gradients",
+                    TapCommand = _selectedMenuItemCommand,
+                },
+                new()
+                {
+                    State = EPages.VersionTracking,
+                    Title = "Version Tracking",
                     TapCommand = _selectedMenuItemCommand,
                 },
             };
@@ -54,6 +62,8 @@ namespace UI_by_Vedernykov.ViewModels
         #region -- Public properties --
 
         public GradientViewViewModel GradientViewViewModel { get; set; }
+
+        public VersionTrackingViewViewModel VersionTrackingViewViewModel { get; set; }
 
         private MenuItem _selectedMenuItem;
         public MenuItem SelectedMenuItem
