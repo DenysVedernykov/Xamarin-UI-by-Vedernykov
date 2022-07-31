@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="UI_by_Vedernykov.Resources.Styles.DarkModeResources">
+
+    <!--  APP COLORS  -->
+
+    <!--  Dark/Primary  -->
+    <Color x:Key="AppColor_i1">#F45E49</Color>
+    <!--  Dark/Disabled 10%  -->
+    <Color x:Key="AppColor_i2">#EB5637</Color>
+    <!--  Dark/Pressed_Light  -->
+    <Color x:Key="AppColor_i3">#D24A2E</Color>
+    <!--  Dark/Pressed_Dark  -->
+    <Color x:Key="AppColor_i4">#AB3821</Color>
+
+    <!--  Text & Background  -->
+
+    <Color x:Key="TextAndBackgroundColor_i1">#FEFEFD</Color>
+    <Color x:Key="TextAndBackgroundColor_i2">#fee9ce</Color>
+    <Color x:Key="TextAndBackgroundColor_i3">#d3a685</Color>
+    <Color x:Key="TextAndBackgroundColor_i4">#395d6a</Color>
+    <Color x:Key="TextAndBackgroundColor_i5">#2b4959</Color>
+    <Color x:Key="TextAndBackgroundColor_i6">#5663e4</Color>
+    <Color x:Key="TextAndBackgroundColor_i7">#7880e7</Color>
+    <Color x:Key="TextAndBackgroundColor_i8">#000000</Color>
+    <Color x:Key="TextAndBackgroundColor_i9">#de27ac</Color>
+    <Color x:Key="TextAndBackgroundColor_i10">#0e1329</Color>
+    <Color x:Key="TextAndBackgroundColor_i11">#ed8500</Color>
+    <Color x:Key="TextAndBackgroundColor_i12">#120800</Color>
+    <Color x:Key="TextAndBackgroundColor_i13">#0c1137</Color>
+    <Color x:Key="TextAndBackgroundColor_i14">#222745</Color>
+    <Color x:Key="TextAndBackgroundColor_i15">#343872</Color>
+    <Color x:Key="TextAndBackgroundColor_i16">#404889</Color>
+    <Color x:Key="TextAndBackgroundColor_i17">#1b1b59</Color>
+    <Color x:Key="TextAndBackgroundColor_i18">#212c6c</Color>
+    <Color x:Key="TextAndBackgroundColor_i19">#565e8d</Color>
+
+    <!--  Indications  -->
+
+    <!--  Indications/ Success Light  -->
+    <Color x:Key="IndicationColor_i1">#3CD47D</Color>
+    <!--  Indications/ Success Dark  -->
+    <Color x:Key="IndicationColor_i2">#4E7E62</Color>
+    <!--  Indications/ Error Light  -->
+    <Color x:Key="IndicationColor_i3">#F73E5C</Color>
+    <!--  Indications/ Error Dark  -->
+    <Color x:Key="IndicationColor_i4">#7C3A45</Color>
+
+</ResourceDictionary>

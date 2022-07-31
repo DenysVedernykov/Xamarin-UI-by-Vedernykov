@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:behaviors="clr-namespace:UI_by_Vedernykov.Behaviors"
+    xmlns:helpers="clr-namespace:UI_by_Vedernykov.Helpers"
+    xmlns:mobileViewModels="clr-namespace:UI_by_Vedernykov.ViewModels.Mobile"
+    BackgroundColor="#1c1a32"
+    x:Class="UI_by_Vedernykov.Views.Mobile.GradientView"
+    x:DataType="mobileViewModels:GradientViewViewModel">
+
+    <Grid
+        ColumnDefinitions="0.5*, 0.5*"
+        RowDefinitions="auto"
+        Margin="30, 20, 30, 0">
+
+        <BoxView
+            Grid.Column="0"
+            Margin="0, 0, 13, 0"
+            HeightRequest="100"
+            xct:CornerRadiusEffect.CornerRadius="20"
+            x:Name="radialGradient">
+
+            <BoxView.Behaviors>
+                <behaviors:MoveBackgroundRadialGradientBehavior>
+                    <behaviors:MoveBackgroundRadialGradientBehavior.GradientStops>
+                        
+                        <GradientStop
+                            Offset="0.1"
+                            Color="#FFE53B"/>
+                        
+                        <GradientStop
+                            Offset="0.3"
+                            Color="#FF2525"/>
+                        
+                        <GradientStop
+                            Offset="1.0"
+                            Color="#FF2525"/>
+                        
+                    </behaviors:MoveBackgroundRadialGradientBehavior.GradientStops>
+                </behaviors:MoveBackgroundRadialGradientBehavior>
+            </BoxView.Behaviors>
+
+        </BoxView>
+
+        <BoxView
+            Grid.Column="1"
+            Margin="13, 0, 0, 0"
+            HeightRequest="100"
+            xct:CornerRadiusEffect.CornerRadius="20"
+            x:Name="linearGradient">
+
+            <BoxView.Behaviors>
+                <behaviors:MoveBackgroundLianearGradientBehavior>
+                    <behaviors:MoveBackgroundLianearGradientBehavior.GradientStops>
+
+                        <GradientStop
+                            Offset="0.1"
+                            Color="#FF2CDF"/>
+
+                        <GradientStop
+                            Offset="0.45"
+                            Color="#5f1ba2"/>
+
+                        <GradientStop
+                            Offset="0.46"
+                            Color="#7d00f9"/>
+
+                        <GradientStop
+                            Offset="0.54"
+                            Color="#7d00f9"/>
+
+                        <GradientStop
+                            Offset="0.55"
+                            Color="#5f1ba2"/>
+
+                        <GradientStop
+                            Offset="1.0"
+                            Color="#FF2CDF"/>
+
+                    </behaviors:MoveBackgroundLianearGradientBehavior.GradientStops>
+                </behaviors:MoveBackgroundLianearGradientBehavior>
+            </BoxView.Behaviors>
+
+        </BoxView>
+        
+    </Grid>
+
+    <ScrollView>
+
+        <StackLayout BindableLayout.ItemsSource="{Binding PairsColors}">
+
+            <BindableLayout.ItemTemplate>
+                <DataTemplate x:DataType="helpers:PairColors">
+
+                    <Grid
+                        ColumnDefinitions="162, 65, auto"
+                        Margin="30, 13"
+                        HeightRequest="100">
+
+                        <BoxView
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.RowSpan="2"
+                            WidthRequest="162"
+                            xct:CornerRadiusEffect.CornerRadius="20">
+
+                            <BoxView.Background>
+                                <LinearGradientBrush EndPoint="1, 1">
+
+                                    <GradientStop
+                                        Color="{Binding First}"
+                                        Offset="0.1" />
+
+                                    <GradientStop
+                                        Color="{Binding Second}"
+                                        Offset="1.0" />
+
+                                </LinearGradientBrush>
+                            </BoxView.Background>
+
+                        </BoxView>
+
+                        <Ellipse
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            VerticalOptions="Start"
+                            Margin="25, 20, 15, 0"
+                            Fill="{Binding First}"
+                            WidthRequest="25"
+                            HeightRequest="25"/>
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Margin="0, 20, 0, 0"
+                            Text="{Binding First, Converter={xct:ColorToHexRgbStringConverter}}"
+                            TextColor="{DynamicResource TextAndBackgroundColor_i1}"/>
+
+                        <Ellipse
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            VerticalOptions="EndAndExpand"
+                            Margin="25, 0, 15, 20"
+                            Fill="{Binding Second}"
+                            WidthRequest="25"
+                            HeightRequest="25"/>
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Margin="0, 0, 0, 20"
+                            VerticalTextAlignment="Center"
+                            Text="{Binding Second, Converter={xct:ColorToHexRgbStringConverter}}"
+                            TextColor="{DynamicResource TextAndBackgroundColor_i1}"/>
+
+                    </Grid>
+
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+
+        </StackLayout>
+
+    </ScrollView>
+
+</StackLayout>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Padding="25"
+    BackgroundColor="{DynamicResource TextAndBackgroundColor_i14}"
+    x:Class="UI_by_Vedernykov.Views.Mobile.MainView">
+
+    <StackLayout Orientation="Horizontal">
+        
+        <Button
+            Style="{DynamicResource BaseMenuButtonStyle}"
+            Text="Left menu"/>
+
+        <Button
+            Style="{DynamicResource BaseMenuButtonStyle}"
+            Text="Right menu"/>
+
+    </StackLayout>
+
+    <Label
+        Text="Main view"
+        TextColor="{DynamicResource TextAndBackgroundColor_i1}"
+        VerticalOptions="CenterAndExpand"
+        HorizontalOptions="Center"/>
+
+</StackLayout>

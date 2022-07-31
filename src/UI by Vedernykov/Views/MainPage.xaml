@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:BaseContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:sc="clr-namespace:UI_by_Vedernykov.Controls.StateContainer"
+    xmlns:enums="clr-namespace:UI_by_Vedernykov.ENums"
+    xmlns:viewmodels="clr-namespace:UI_by_Vedernykov.ViewModels"
+    xmlns:views="clr-namespace:UI_by_Vedernykov.Views"
+    xmlns:mobileViews="clr-namespace:UI_by_Vedernykov.Views.Mobile"
+    x:Class="UI_by_Vedernykov.Views.MainPage"
+    x:DataType="viewmodels:MainPageViewModel">
+
+    <xct:SideMenuView State="{Binding StateSideMenu}">
+
+        <mobileViews:LeftMenuView
+            xct:SideMenuView.Position="LeftMenu"
+            xct:SideMenuView.MenuAppearanceType="SlideIn"
+            xct:SideMenuView.MenuWidthPercentage=".6"/>
+
+        <sc:StateContainer
+            xct:SideMenuView.Position="MainView"
+            State="{Binding SelectedMenuItem.State}">
+
+            <sc:StateCondition State="{x:Static enums:EPages.Main}">
+                <mobileViews:MainView/>
+            </sc:StateCondition>
+
+            <sc:StateCondition State="{x:Static enums:EPages.SetFocusOnEntryCompleted}">
+                <mobileViews:SetFocusOnEntryCompletedView/>
+            </sc:StateCondition>
+
+            <sc:StateCondition State="{x:Static enums:EPages.Gradient}">
+                <mobileViews:GradientView BindingContext="{Binding GradientViewViewModel}"/>
+            </sc:StateCondition>
+
+        </sc:StateContainer>
+
+        <mobileViews:AboutAppView
+            xct:SideMenuView.Position="RightMenu"
+            xct:SideMenuView.MenuAppearanceType="SlideInOut"
+            xct:SideMenuView.MenuWidthPercentage="1"/>
+
+    </xct:SideMenuView>
+
+</views:BaseContentPage>

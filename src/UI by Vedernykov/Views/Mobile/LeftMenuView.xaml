@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:helpers="clr-namespace:UI_by_Vedernykov.Helpers"
+    xmlns:viewmodels="clr-namespace:UI_by_Vedernykov.ViewModels"
+    xmlns:pk="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Class="UI_by_Vedernykov.Views.Mobile.LeftMenuView"
+    x:DataType="viewmodels:MainPageViewModel">
+
+    <StackLayout.Background>
+
+        <LinearGradientBrush EndPoint="1, 0">
+
+            <GradientStop
+                Color="{DynamicResource TextAndBackgroundColor_i15}"
+                Offset="0.1" />
+
+            <GradientStop
+                Color="{DynamicResource TextAndBackgroundColor_i16}"
+                Offset="1.0" />
+
+        </LinearGradientBrush>
+
+    </StackLayout.Background>
+
+    <Label
+        Text="Projects"
+        TextColor="{DynamicResource TextAndBackgroundColor_i1}"
+        FontSize="Title"
+        Padding="30, 10">
+
+        <Label.Background>
+
+            <LinearGradientBrush EndPoint="1, 0">
+
+                <GradientStop
+                    Color="{DynamicResource TextAndBackgroundColor_i17}"
+                    Offset="0.1" />
+
+                <GradientStop
+                    Color="{DynamicResource TextAndBackgroundColor_i18}"
+                    Offset="1.0" />
+
+            </LinearGradientBrush>
+
+        </Label.Background>
+
+    </Label>
+
+    <CollectionView
+        SelectionMode="Single"
+        ItemsSource="{Binding MenuItems}"
+        SelectedItem="{Binding SelectedMenuItem}"
+        SelectionChangedCommand="{Binding ChangeSelectedMenuItemCommand}"
+        Margin="12, 6">
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="helpers:MenuItem">
+
+                <pk:PancakeView
+                    Border="{DynamicResource TextAndBackgroundColor_i12}"
+                    CornerRadius="5"
+                    Padding="10">
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroupList>
+
+                            <VisualStateGroup x:Name="CommonStates">
+
+                                <VisualState Name="Normal">
+
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                    </VisualState.Setters>
+
+                                </VisualState>
+
+                                <VisualState Name="Selected">
+
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{DynamicResource TextAndBackgroundColor_i19}"/>
+                                    </VisualState.Setters>
+
+                                </VisualState>
+
+                            </VisualStateGroup>
+
+                        </VisualStateGroupList>
+                    </VisualStateManager.VisualStateGroups>
+
+                    <Label
+                        Text="{Binding Title}"
+                        TextColor="{DynamicResource TextAndBackgroundColor_i1}"
+                        FontSize="Header"/>
+
+                </pk:PancakeView>
+
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+
+    </CollectionView>
+
+    <Label
+        Text="About app"
+        TextColor="{DynamicResource TextAndBackgroundColor_i1}"
+        FontSize="Header"
+        Margin="12, 6"
+        Padding="10"
+        xct:TouchEffect.Command="{Binding ShowAboutAppPageCommand}"/>
+
+</StackLayout>

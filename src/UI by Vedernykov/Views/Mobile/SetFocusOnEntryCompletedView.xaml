@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:local="clr-namespace:UI_by_Vedernykov"
+    xmlns:behaviors="clr-namespace:UI_by_Vedernykov.Behaviors"
+    xmlns:controls="clr-namespace:UI_by_Vedernykov.Controls"
+    xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    Spacing="50"
+    BackgroundColor="{DynamicResource TextAndBackgroundColor_i6}"
+    x:Class="UI_by_Vedernykov.Views.Mobile.SetFocusOnEntryCompletedView">
+
+    <StackLayout.Resources>
+
+        <Style x:Key="CustomNoBorderEntryStyle_i1" TargetType="controls:CustomNoBorderEntry">
+            <Setter Property="Placeholder" Value="-"/>
+            <Setter Property="Keyboard" Value="Numeric"/>
+            <Setter Property="MaxLength" Value="1"/>
+            <Setter Property="ReturnType" Value="Next"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="ShouldSetCursorPositionToEnd" Value="True"/>
+            <Setter Property="ShouldSetFocusToNextElement" Value="False"/>
+            <Setter Property="TextColor" Value="{DynamicResource TextAndBackgroundColor_i1}"/>
+            <Setter Property="PlaceholderColor" Value="{DynamicResource TextAndBackgroundColor_i1}"/>
+        </Style>
+
+        <Style x:Key="PancakeViewStyle_i1" TargetType="pancakeview:PancakeView">
+            <Setter Property="Margin" Value="15"/>
+            <Setter Property="Padding" Value="0, 15"/>
+            <Setter Property="WidthRequest" Value="45"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource TextAndBackgroundColor_i7}"/>
+        </Style>
+
+    </StackLayout.Resources>
+
+    <Label
+        Text="Completing one entry will bring focus to the next entry."
+        TextColor="{DynamicResource TextAndBackgroundColor_i1}"
+        HorizontalTextAlignment="Center"/>
+
+    <pancakeview:PancakeView
+        HorizontalOptions="CenterAndExpand"
+        Margin="30"
+        CornerRadius="5"
+        Border="{pancakeview:BorderMarkup Color={StaticResource TextAndBackgroundColor_i1}, Thickness=1}">
+
+        <StackLayout
+            Spacing="3"
+            Orientation="Horizontal">
+
+            <Entry
+                HeightRequest="1"
+                WidthRequest="1"/>
+
+            <pancakeview:PancakeView
+                Style="{DynamicResource PancakeViewStyle_i1}"
+                x:Name="PancakeView1">
+
+                <controls:CustomNoBorderEntry
+                    Style="{DynamicResource CustomNoBorderEntryStyle_i1}"
+                    x:Name="Entry1">
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal"/>
+                            <VisualState x:Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Property="PlaceholderColor" Value="{DynamicResource TextAndBackgroundColor_i8}" />
+                                    <Setter Property="TextColor" Value="{DynamicResource TextAndBackgroundColor_i8}" />
+                                    <Setter TargetName="PancakeView1" Property="BackgroundColor" Value="{DynamicResource TextAndBackgroundColor_i1}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+
+                    <controls:CustomNoBorderEntry.Behaviors>
+
+                        <behaviors:ShakeInvalidValue
+                            View="{x:Reference PancakeView1}"
+                            FocusedValidTextColor="{StaticResource TextAndBackgroundColor_i8}"
+                            FocusedInvalidTextColor="{StaticResource TextAndBackgroundColor_i1}"
+                            UnfocusedTextColor="{StaticResource TextAndBackgroundColor_i1}"
+                            FocusedValidBackgroundColor="{StaticResource TextAndBackgroundColor_i1}"
+                            FocusedInvalidBackgroundColor="{StaticResource TextAndBackgroundColor_i9}"
+                            UnfocusedBackgroundColor="{StaticResource TextAndBackgroundColor_i7}"/>
+
+                        <behaviors:ValidatorBehavior
+                            Match="{x:Static local:Constants+Validators.NUMBER}"
+                            ShouldSetOldValidValue="True" />
+
+                        <behaviors:SetFocusOnEntryNextOrPreviousBehavior
+                            NextElement="{x:Reference Entry2}"
+                            IsInvalidValueMoveToNextElement="False"/>
+
+                    </controls:CustomNoBorderEntry.Behaviors>
+
+                </controls:CustomNoBorderEntry>
+
+            </pancakeview:PancakeView>
+
+            <pancakeview:PancakeView
+                Style="{DynamicResource PancakeViewStyle_i1}"
+                x:Name="PancakeView2">
+
+                <controls:CustomNoBorderEntry
+                    Style="{DynamicResource CustomNoBorderEntryStyle_i1}"
+                    x:Name="Entry2">
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal"/>
+                            <VisualState x:Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Property="PlaceholderColor" Value="{DynamicResource TextAndBackgroundColor_i8}" />
+                                    <Setter Property="TextColor" Value="{DynamicResource TextAndBackgroundColor_i8}" />
+                                    <Setter TargetName="PancakeView2" Property="BackgroundColor" Value="{DynamicResource TextAndBackgroundColor_i1}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+
+                    <controls:CustomNoBorderEntry.Behaviors>
+
+                        <behaviors:ShakeInvalidValue
+                            View="{x:Reference PancakeView2}"
+                            FocusedValidTextColor="{StaticResource TextAndBackgroundColor_i8}"
+                            FocusedInvalidTextColor="{StaticResource TextAndBackgroundColor_i1}"
+                            UnfocusedTextColor="{StaticResource TextAndBackgroundColor_i1}"
+                            FocusedValidBackgroundColor="{StaticResource TextAndBackgroundColor_i1}"
+                            FocusedInvalidBackgroundColor="{StaticResource TextAndBackgroundColor_i9}"
+                            UnfocusedBackgroundColor="{StaticResource TextAndBackgroundColor_i7}"/>
+
+                        <behaviors:ValidatorBehavior
+                            Match="{x:Static local:Constants+Validators.NUMBER}"
+                            ShouldSetOldValidValue="True" />
+
+                        <behaviors:SetFocusOnEntryNextOrPreviousBehavior
+                            PreviousElement="{x:Reference Entry1}"
+                            NextElement="{x:Reference Entry3}"
+                            IsInvalidValueMoveToNextElement="False"/>
+
+                    </controls:CustomNoBorderEntry.Behaviors>
+
+                </controls:CustomNoBorderEntry>
+
+            </pancakeview:PancakeView>
+
+            <pancakeview:PancakeView
+                Style="{DynamicResource PancakeViewStyle_i1}"
+                x:Name="PancakeView3">
+
+                <controls:CustomNoBorderEntry
+                    Style="{DynamicResource CustomNoBorderEntryStyle_i1}"
+                    x:Name="Entry3">
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal"/>
+                            <VisualState x:Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Property="PlaceholderColor" Value="{DynamicResource TextAndBackgroundColor_i8}" />
+                                    <Setter Property="TextColor" Value="{DynamicResource TextAndBackgroundColor_i8}" />
+                                    <Setter TargetName="PancakeView3" Property="BackgroundColor" Value="{DynamicResource TextAndBackgroundColor_i1}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+
+                    <controls:CustomNoBorderEntry.Behaviors>
+
+                        <behaviors:ShakeInvalidValue
+                            View="{x:Reference PancakeView3}"
+                            FocusedValidTextColor="{StaticResource TextAndBackgroundColor_i8}"
+                            FocusedInvalidTextColor="{StaticResource TextAndBackgroundColor_i1}"
+                            UnfocusedTextColor="{StaticResource TextAndBackgroundColor_i1}"
+                            FocusedValidBackgroundColor="{StaticResource TextAndBackgroundColor_i1}"
+                            FocusedInvalidBackgroundColor="{StaticResource TextAndBackgroundColor_i9}"
+                            UnfocusedBackgroundColor="{StaticResource TextAndBackgroundColor_i7}"/>
+
+                        <behaviors:ValidatorBehavior
+                            Match="{x:Static local:Constants+Validators.NUMBER}"
+                            ShouldSetOldValidValue="True" />
+
+                        <behaviors:SetFocusOnEntryNextOrPreviousBehavior
+                            PreviousElement="{x:Reference Entry2}"
+                            NextElement="{x:Reference Entry4}"
+                            IsInvalidValueMoveToNextElement="False"/>
+
+                    </controls:CustomNoBorderEntry.Behaviors>
+
+                </controls:CustomNoBorderEntry>
+
+            </pancakeview:PancakeView>
+
+            <pancakeview:PancakeView
+                Style="{DynamicResource PancakeViewStyle_i1}"
+                x:Name="PancakeView4">
+
+                <controls:CustomNoBorderEntry
+                    Style="{DynamicResource CustomNoBorderEntryStyle_i1}"
+                    x:Name="Entry4">
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal"/>
+                            <VisualState x:Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Property="PlaceholderColor" Value="{DynamicResource TextAndBackgroundColor_i8}" />
+                                    <Setter Property="TextColor" Value="{DynamicResource TextAndBackgroundColor_i8}" />
+                                    <Setter TargetName="PancakeView4" Property="BackgroundColor" Value="{DynamicResource TextAndBackgroundColor_i1}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+
+                    <controls:CustomNoBorderEntry.Behaviors>
+
+                        <behaviors:ShakeInvalidValue
+                            View="{x:Reference PancakeView4}"
+                            FocusedValidTextColor="{StaticResource TextAndBackgroundColor_i8}"
+                            FocusedInvalidTextColor="{StaticResource TextAndBackgroundColor_i1}"
+                            UnfocusedTextColor="{StaticResource TextAndBackgroundColor_i1}"
+                            FocusedValidBackgroundColor="{StaticResource TextAndBackgroundColor_i1}"
+                            FocusedInvalidBackgroundColor="{StaticResource TextAndBackgroundColor_i9}"
+                            UnfocusedBackgroundColor="{StaticResource TextAndBackgroundColor_i7}"/>
+
+                        <behaviors:ValidatorBehavior
+                            Match="{x:Static local:Constants+Validators.NUMBER}"
+                            ShouldSetOldValidValue="True" />
+
+                        <behaviors:SetFocusOnEntryNextOrPreviousBehavior
+                            PreviousElement="{x:Reference Entry3}"
+                            IsInvalidValueMoveToNextElement="False"/>
+
+                    </controls:CustomNoBorderEntry.Behaviors>
+
+                </controls:CustomNoBorderEntry>
+
+            </pancakeview:PancakeView>
+
+        </StackLayout>
+
+    </pancakeview:PancakeView>
+
+    <StackLayout
+        Spacing="3"
+        Margin="50, 10">
+
+        <Entry
+            Placeholder="Entry 1"
+            PlaceholderColor="{DynamicResource TextAndBackgroundColor_i1}"
+            TextColor="{DynamicResource TextAndBackgroundColor_i1}"
+            ReturnType="Next"
+            xct:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference Entry6}"
+            x:Name="Entry5"/>
+
+        <Entry
+            Placeholder="Entry 2"
+            PlaceholderColor="{DynamicResource TextAndBackgroundColor_i1}"
+            TextColor="{DynamicResource TextAndBackgroundColor_i1}"
+            ReturnType="Next"
+            xct:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference Entry7}"
+            x:Name="Entry6"/>
+
+        <Entry
+            Placeholder="Entry 3"
+            PlaceholderColor="{DynamicResource TextAndBackgroundColor_i1}"
+            TextColor="{DynamicResource TextAndBackgroundColor_i1}"
+            ReturnType="Next"
+            xct:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference Entry8}"
+            x:Name="Entry7"/>
+
+        <Entry
+            Placeholder="Entry 4"
+            PlaceholderColor="{DynamicResource TextAndBackgroundColor_i1}"
+            TextColor="{DynamicResource TextAndBackgroundColor_i1}"
+            x:Name="Entry8"/>
+
+    </StackLayout>
+    
+</StackLayout>
