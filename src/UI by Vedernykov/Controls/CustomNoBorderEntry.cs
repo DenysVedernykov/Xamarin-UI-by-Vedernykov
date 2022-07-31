@@ -8,8 +8,6 @@ namespace UI_by_Vedernykov.Controls
     {
         #region -- Public properties --
 
-        public event EventHandler<EventArgs> IsValidChanged;
-
         public static readonly BindableProperty IsValidProperty = BindableProperty.Create(
             propertyName: nameof(IsValid),
             returnType: typeof(bool),
@@ -59,6 +57,8 @@ namespace UI_by_Vedernykov.Controls
             get => (bool)GetValue(ShouldResponseToInvalidValueProperty);
             set => SetValue(ShouldResponseToInvalidValueProperty, value);
         }
+
+        public event EventHandler<EventArgs> IsValidChanged;
 
         #endregion
 

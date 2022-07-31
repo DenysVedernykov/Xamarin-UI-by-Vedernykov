@@ -13,6 +13,8 @@ namespace UI_by_Vedernykov.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
+        private ICommand _selectedMenuItemCommand;
+
         public MainPageViewModel(
             GradientViewViewModel gradientViewViewModel,
             INavigationService navigationService)
@@ -20,30 +22,33 @@ namespace UI_by_Vedernykov.ViewModels
         {
             GradientViewViewModel = gradientViewViewModel;
 
+            _selectedMenuItemCommand = new AsyncCommand(OnSelectedMenuItemCommand, allowsMultipleExecutions: false);
+            _showAboutAppPageCommand = new AsyncCommand(OnShowAboutAppPageCommand, allowsMultipleExecutions: false);
+
             _menuItems = new()
             {
                 new()
                 {
                     State = EPages.Main,
                     Title = "Main",
+                    TapCommand = _selectedMenuItemCommand,
                 },
                 new()
                 {
                     State = EPages.SetFocusOnEntryCompleted,
                     Title = "Set Focus On Entry",
+                    TapCommand = _selectedMenuItemCommand,
                 },
                 new()
                 {
                     State = EPages.Gradient,
                     Title = "Gradients",
+                    TapCommand = _selectedMenuItemCommand,
                 },
             };
 
             SelectedMenuItem = _menuItems.FirstOrDefault();
             _stateSideMenu = SideMenuState.MainViewShown;
-
-            _changeSelectedMenuItemCommand = new AsyncCommand(OnChangeSelectedMenuItemCommand, allowsMultipleExecutions: false);
-            _showAboutAppPageCommand = new AsyncCommand(OnShowAboutAppPageCommand, allowsMultipleExecutions: false);
         }
 
         #region -- Public properties --
@@ -71,13 +76,6 @@ namespace UI_by_Vedernykov.ViewModels
             set => SetProperty(ref _stateSideMenu, value);
         }
 
-        private ICommand _changeSelectedMenuItemCommand;
-        public ICommand ChangeSelectedMenuItemCommand
-        {
-            get => _changeSelectedMenuItemCommand;
-            set => SetProperty(ref _changeSelectedMenuItemCommand, value);
-        }
-
         private ICommand _showAboutAppPageCommand;
         public ICommand ShowAboutAppPageCommand
         {
@@ -93,7 +91,7 @@ namespace UI_by_Vedernykov.ViewModels
 
         #region -- Private helpers --
 
-        private Task OnChangeSelectedMenuItemCommand()
+        private Task OnSelectedMenuItemCommand()
         {
             StateSideMenu = SideMenuState.MainViewShown;
 

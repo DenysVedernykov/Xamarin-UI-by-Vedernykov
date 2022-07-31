@@ -1,5 +1,4 @@
-﻿
-using Foundation;
+﻿using Foundation;
 using UIKit;
 
 namespace UI_by_Vedernykov.iOS
@@ -17,6 +16,9 @@ namespace UI_by_Vedernykov.iOS
         //
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
+
+        #region -- Overrides --
+
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Rg.Plugins.Popup.Popup.Init();
@@ -29,5 +31,7 @@ namespace UI_by_Vedernykov.iOS
 
             return base.FinishedLaunching(app, options);
         }
+
+        #endregion
     }
 }

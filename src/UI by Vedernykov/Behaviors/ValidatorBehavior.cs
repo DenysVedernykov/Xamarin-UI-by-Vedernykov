@@ -22,12 +22,14 @@ namespace UI_by_Vedernykov.Behaviors
         protected override void OnAttachedTo(CustomNoBorderEntry bindable)
         {
             bindable.TextChanged += OnTextChanged;
+
             base.OnAttachedTo(bindable);
         }
 
         protected override void OnDetachingFrom(CustomNoBorderEntry bindable)
         {
             bindable.TextChanged -= OnTextChanged;
+
             base.OnDetachingFrom(bindable);
         }
 
