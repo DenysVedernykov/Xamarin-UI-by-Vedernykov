@@ -35,7 +35,7 @@ namespace UI_by_Vedernykov.Behaviors
             base.OnAttachedTo(bindable);
 
             _element = bindable;
-            _element.PropertyChanged += _view_PropertyChanged;
+            _element.PropertyChanged += OnPropertyChanged;
 
             _x = StartPoint.X;
             _y = StartPoint.Y;
@@ -52,7 +52,7 @@ namespace UI_by_Vedernykov.Behaviors
 
         protected override void OnDetachingFrom(VisualElement bindable)
         {
-            _element.PropertyChanged -= _view_PropertyChanged;
+            _element.PropertyChanged -= OnPropertyChanged;
 
             base.OnDetachingFrom(bindable);
         }
@@ -75,7 +75,7 @@ namespace UI_by_Vedernykov.Behaviors
             _percentSpacingStep = spacingStep / s;
         }
 
-        private void _view_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void OnPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "Renderer")
             {
