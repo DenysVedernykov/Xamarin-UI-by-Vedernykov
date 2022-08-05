@@ -18,8 +18,7 @@
         HorizontalOptions="FillAndExpand"
         HorizontalScrollBarVisibility="Never"
         IsEnabled="False"
-        Orientation="Horizontal"
-        x:Name="mainPage">
+        Orientation="Horizontal">
         
         <StackLayout
             Padding="0"
@@ -28,7 +27,7 @@
             Spacing="0">
             
             <StackLayout.Behaviors>
-                <behaviors:MarqueeBehavior PageWidth="{Binding Path=Width, Source={x:Reference mainPage}}" />
+                <behaviors:MarqueeBehavior/>
             </StackLayout.Behaviors>
 
             <Label Text="dffgdf dfg dfgdf gd df  df gdfg df f dfg ddf gdf dfgd gdf gdf df"

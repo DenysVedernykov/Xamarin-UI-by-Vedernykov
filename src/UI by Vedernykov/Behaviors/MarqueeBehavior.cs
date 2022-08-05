@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace UI_by_Vedernykov.Behaviors
@@ -7,7 +8,11 @@ namespace UI_by_Vedernykov.Behaviors
     {
         private bool _isStartTimer;
 
+        private double _parentWidth;
+        private double _visualElementWidth;
+
         private VisualElement _visualElement;
+        private VisualElement _visualElementsParent;
 
         #region -- Public properties --
 
@@ -46,36 +51,65 @@ namespace UI_by_Vedernykov.Behaviors
 
         #region -- Private helpers --
 
-        private void OnPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "Renderer")
+            switch (e.PropertyName)
             {
-                _isStartTimer = !_isStartTimer;
+                case "Renderer":
+                    _isStartTimer = !_isStartTimer;
 
-                if (_isStartTimer)
-                {
+                    if (_isStartTimer)
+                    {
+                        StartAnimation();
+                    }
+
+                    break;
+
+                case "Width":
+                    _visualElementWidth = _visualElement.Width;
+
                     StartAnimation();
-                }
+                    break;
+
+                case "Parent":
+
+                    if (sender is VisualElement visualElement)
+                    {
+                        _visualElementsParent = (VisualElement)visualElement.Parent;
+                        _visualElementsParent.PropertyChanged += OnPropertyChangedParent;
+                    }
+
+                    break;
+            }
+        }
+
+        private void OnPropertyChangedParent(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Width")
+            {
+                _parentWidth = _visualElementsParent.Width;
+
+                StartAnimation();
             }
         }
 
         private void StartAnimation()
         {
-            Device.StartTimer(TimeSpan.FromMilliseconds(50), () =>
+            if (_visualElementWidth > 0 && _parentWidth > 0)
             {
-                var width = PageWidth == 0
-                    ? _visualElement.Width
-                    : PageWidth;
-
-                if (Math.Abs(_visualElement.TranslationX) > width)
+                Device.StartTimer(TimeSpan.FromMilliseconds(50), () =>
                 {
-                    _visualElement.TranslationX = width;
-                }
+                    if (Math.Abs(_visualElement.TranslationX) > _visualElementWidth)
+                    {
+                        _visualElement.TranslationX = _parentWidth;
+                    }
 
-                _visualElement.TranslationX -= 5f;
+                    _visualElement.TranslationX -= 5f;
 
-                return _isStartTimer;
-            });
+                    return _isStartTimer;
+                });
+            }
+
             //uint milliseconds = 50;
 
             //Device.StartTimer(TimeSpan.FromMilliseconds(milliseconds), () =>
