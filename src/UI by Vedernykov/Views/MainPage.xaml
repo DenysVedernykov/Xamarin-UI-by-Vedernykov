@@ -38,6 +38,10 @@
                 <views:VersionTrackingView BindingContext="{Binding VersionTrackingViewViewModel}"/>
             </sc:StateCondition>
 
+            <sc:StateCondition State="{x:Static enums:EPages.AutoScroll}">
+                <views:AutoScrollView/>
+            </sc:StateCondition>
+
         </sc:StateContainer>
 
         <mobileViews:AboutAppView

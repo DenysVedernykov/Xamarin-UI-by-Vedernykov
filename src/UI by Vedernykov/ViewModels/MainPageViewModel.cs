@@ -53,6 +53,12 @@ namespace UI_by_Vedernykov.ViewModels
                     Title = "Version Tracking",
                     TapCommand = _selectedMenuItemCommand,
                 },
+                new()
+                {
+                    State = EPages.AutoScroll,
+                    Title = "Auto Scroll",
+                    TapCommand = _selectedMenuItemCommand,
+                },
             };
 
             SelectedMenuItem = _menuItems.FirstOrDefault();
@@ -92,10 +98,6 @@ namespace UI_by_Vedernykov.ViewModels
             get => _showAboutAppPageCommand;
             set => SetProperty(ref _showAboutAppPageCommand, value);
         }
-
-        #endregion
-
-        #region -- Overrides --
 
         #endregion
 

@@ -7,5 +7,6 @@
         SetFocusOnEntryCompleted,
         Gradients,
         VersionTracking,
+        AutoScroll,
     }
 }
