@@ -2,8 +2,10 @@
 {
     public enum EDirectionMove
     {
-        EndToStart,
         StartToEnd,
+        EndToStart,
+        CircleStartToEnd,
+        CircleEndToStart,
         Bounce,
     }
 }

@@ -7,90 +7,72 @@
     BackgroundColor="{DynamicResource TextAndBackgroundColor_i14}"
     x:Class="UI_by_Vedernykov.Views.AutoScrollView">
 
+    <ScrollView.Resources>
+
+        <Style x:Key="ShortLabelStyle_i1" TargetType="Label">
+            <Setter Property="FormattedText">
+
+                <FormattedString>
+                    <Span Text="START" TextColor="Red"/>
+                    <Span TextColor="White" Text=" hello world "/>
+                    <Span Text="END" TextColor="Red"/>
+                </FormattedString>
+                
+            </Setter>
+        </Style>
+
+        <Style x:Key="LongLabelStyle_i1" TargetType="Label">
+            <Setter Property="FormattedText">
+
+                <FormattedString>
+                    <Span Text="START" TextColor="Red"/>
+                    <Span TextColor="White" Text=" dffgdf dfg dfgdf gd df  df gdfg df f dfg ddf gdf dfgd gdf gdf dfdfg dfgdf gd df  df gdfg df f dfg ddf gdf dfgd gdf gdf df dffgdf dfg dfgdf gd df  df gdfg df f dfg ddf gdf dfgd gdf gdf df "/>
+                    <Span Text="END" TextColor="Red"/>
+                </FormattedString>
+                
+            </Setter>
+        </Style>
+
+        <Style x:Key="LabelStyle_i1" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource TextAndBackgroundColor_i1}"/>
+        </Style>
+
+        <Style x:Key="ScrollViewStyle_i1" TargetType="ScrollView">
+            <Setter Property="HeightRequest" Value="45"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Never"/>
+            <Setter Property="IsEnabled" Value="False"/>
+        </Style>
+
+        <Style x:Key="StackLayoutStyle_i1" TargetType="StackLayout">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BackgroundColor" Value="Green"/>
+            <Setter Property="Spacing" Value="0"/>
+        </Style>
+
+    </ScrollView.Resources>
+    
     <StackLayout Spacing="10">
 
         <Label
-            Text="Main view"
-            TextColor="{DynamicResource TextAndBackgroundColor_i1}"
-            VerticalOptions="Start"
-            HorizontalOptions="Center"/>
+            Text="Auto Scroll"
+            TextColor="{DynamicResource TextAndBackgroundColor_i11}"
+            FontSize="Large"
+            Margin="0, 0, 0, 15"/>
 
-        <ScrollView
-            HeightRequest="45"
-            HorizontalOptions="FillAndExpand"
-            HorizontalScrollBarVisibility="Never"
-            IsEnabled="False"
-            Orientation="Vertical">
+        <Label
+            Text="Long text"
+            TextColor="{DynamicResource IndicationColor_i1}"
+            FontSize="Medium"
+            Margin="0, 0, 0, 15"/>
 
-            <StackLayout
-                Padding="0"
-                BackgroundColor="Green"
-                Orientation="Vertical"
-                Spacing="0">
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Vertical, Direction=StartToEnd"/>
 
-                <StackLayout.Behaviors>
+        <ScrollView Style="{DynamicResource ScrollViewStyle_i1}">
 
-                    <behaviors:MarqueeBehavior
-                        SecondsToScroll="3.55"
-                        Easing="BounceOut"
-                        Direction="EndToStart"/>
-
-                </StackLayout.Behaviors>
-
-                <Label Text="START dffgdf dfg dfgdf gd df  df gdfg df f dfg ddf gdf dfgd gdf gdf df"
-                       TextColor="Beige"/>
-
-                <Label Text="dffgdf dfg dfgdf gd df  df gdfg df f dfg ddf gdf dfgd gdf gdf df END"
-                       TextColor="Red"/>
-
-            </StackLayout>
-
-        </ScrollView>
-
-        <ScrollView
-            HeightRequest="45"
-            HorizontalOptions="FillAndExpand"
-            HorizontalScrollBarVisibility="Never"
-            IsEnabled="False"
-            Orientation="Horizontal">
-
-            <StackLayout
-                Padding="0"
-                BackgroundColor="Green"
-                Orientation="Horizontal"
-                Spacing="0">
-
-                <StackLayout.Behaviors>
-
-                    <behaviors:MarqueeBehavior
-                        SecondsToScroll="7"
-                        Direction="EndToStart"
-                        Orientation="Horizontal"/>
-
-                </StackLayout.Behaviors>
-
-                <Label Text="START dffgdf dfg dfgdf gd df  df gdfg df f dfg ddf gdf dfgd gdf gdf df"
-                       TextColor="Beige"/>
-
-                <Label Text="dffgdf dfg dfgdf gd df  df gdfg df f dfg ddf gdf dfgd gdf gdf df END"
-                       TextColor="Red"/>
-
-            </StackLayout>
-
-        </ScrollView>
-
-        <ScrollView
-            HeightRequest="45"
-            HorizontalOptions="FillAndExpand"
-            HorizontalScrollBarVisibility="Never"
-            IsEnabled="False"
-            Orientation="Vertical">
-
-            <StackLayout
-                Padding="0"
-                BackgroundColor="Green"
-                Orientation="Vertical"
-                Spacing="0">
+            <StackLayout Style="{DynamicResource StackLayoutStyle_i1}">
 
                 <StackLayout.Behaviors>
 
@@ -101,28 +83,23 @@
 
                 </StackLayout.Behaviors>
 
-                <Label Text="START dffgdf dfg dfgdf gd df  df gdfg df f dfg ddf gdf dfgd gdf gdf df"
-                       TextColor="Beige"/>
-
-                <Label Text="dffgdf dfg dfgdf gd df  df gdfg df f dfg ddf gdf dfgd gdf gdf df END"
-                       TextColor="Red"/>
+                <Label Style="{DynamicResource LongLabelStyle_i1}"/>
 
             </StackLayout>
 
         </ScrollView>
 
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Horizontal, Direction=StartToEnd"/>
+
         <ScrollView
-            HeightRequest="45"
-            HorizontalOptions="FillAndExpand"
-            HorizontalScrollBarVisibility="Never"
-            IsEnabled="False"
+            Style="{DynamicResource ScrollViewStyle_i1}"
             Orientation="Horizontal">
 
             <StackLayout
-                Padding="0"
-                BackgroundColor="Green"
-                Orientation="Horizontal"
-                Spacing="0">
+                Style="{DynamicResource StackLayoutStyle_i1}"
+                Orientation="Horizontal">
 
                 <StackLayout.Behaviors>
 
@@ -133,11 +110,462 @@
 
                 </StackLayout.Behaviors>
 
-                <Label Text="START dffgdf dfg dfgdf gd df  df gdfg df f dfg ddf gdf dfgd gdf gdf df"
-                       TextColor="Beige"/>
+                <Label Style="{DynamicResource LongLabelStyle_i1}"/>
 
-                <Label Text="dffgdf dfg dfgdf gd df  df gdfg df f dfg ddf gdf dfgd gdf gdf df END"
-                       TextColor="Red"/>
+            </StackLayout>
+
+        </ScrollView>
+
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Vertical, Direction=EndToStart"/>
+
+        <ScrollView Style="{DynamicResource ScrollViewStyle_i1}">
+
+            <StackLayout Style="{DynamicResource StackLayoutStyle_i1}">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="3.55"
+                        Easing="BounceOut"
+                        Direction="EndToStart"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource LongLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Horizontal, Direction=EndToStart"/>
+
+        <ScrollView
+            Style="{DynamicResource ScrollViewStyle_i1}"
+            Orientation="Horizontal">
+
+            <StackLayout
+                Style="{DynamicResource StackLayoutStyle_i1}"
+                Orientation="Horizontal">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="7"
+                        Direction="EndToStart"
+                        Orientation="Horizontal"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource LongLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+        
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Vertical, Direction=CircleStartToEnd"/>
+
+        <ScrollView Style="{DynamicResource ScrollViewStyle_i1}">
+
+            <StackLayout Style="{DynamicResource StackLayoutStyle_i1}">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="3.55"
+                        Direction="CircleStartToEnd"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource LongLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Horizontal, Direction=CircleStartToEnd"/>
+
+        <ScrollView
+            Style="{DynamicResource ScrollViewStyle_i1}"
+            Orientation="Horizontal">
+
+            <StackLayout
+                Style="{DynamicResource StackLayoutStyle_i1}"
+                Orientation="Horizontal">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="3.55"
+                        Direction="CircleStartToEnd"
+                        Orientation="Horizontal"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource LongLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+        
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Vertical, Direction=CircleEndToStart"/>
+
+        <ScrollView Style="{DynamicResource ScrollViewStyle_i1}">
+
+            <StackLayout Style="{DynamicResource StackLayoutStyle_i1}">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="3.55"
+                        Direction="CircleEndToStart"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource LongLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Horizontal, Direction=CircleEndToStart"/>
+
+        <ScrollView
+            Style="{DynamicResource ScrollViewStyle_i1}"
+            Orientation="Horizontal">
+
+            <StackLayout
+                Style="{DynamicResource StackLayoutStyle_i1}"
+                Orientation="Horizontal">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="3.55"
+                        Direction="CircleEndToStart"
+                        Orientation="Horizontal"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource LongLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Vertical, Direction=Bounce"/>
+
+        <ScrollView Style="{DynamicResource ScrollViewStyle_i1}">
+
+            <StackLayout Style="{DynamicResource StackLayoutStyle_i1}">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="3.55"
+                        Easing="BounceOut"
+                        Direction="Bounce"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource LongLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Horizontal, Direction=Bounce"/>
+        
+        <ScrollView
+            Style="{DynamicResource ScrollViewStyle_i1}"
+            Orientation="Horizontal">
+
+            <StackLayout
+                Style="{DynamicResource StackLayoutStyle_i1}"
+                Orientation="Horizontal">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="3.55"
+                        Direction="Bounce"
+                        Orientation="Horizontal"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource LongLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+
+        <!--Short text-->
+        
+        <Label
+            Text="Short text"
+            TextColor="{DynamicResource IndicationColor_i1}"
+            FontSize="Medium"
+            Margin="0, 0, 0, 15"/>
+
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Vertical, Direction=StartToEnd"/>
+
+        <ScrollView Style="{DynamicResource ScrollViewStyle_i1}">
+
+            <StackLayout Style="{DynamicResource StackLayoutStyle_i1}">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="3.55"
+                        Easing="BounceOut"
+                        Direction="StartToEnd"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource ShortLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Horizontal, Direction=StartToEnd"/>
+
+        <ScrollView
+            Style="{DynamicResource ScrollViewStyle_i1}"
+            Orientation="Horizontal">
+
+            <StackLayout
+                Style="{DynamicResource StackLayoutStyle_i1}"
+                Orientation="Horizontal">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="7"
+                        Direction="StartToEnd"
+                        Orientation="Horizontal"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource ShortLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Vertical, Direction=EndToStart"/>
+
+        <ScrollView Style="{DynamicResource ScrollViewStyle_i1}">
+
+            <StackLayout Style="{DynamicResource StackLayoutStyle_i1}">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="3.55"
+                        Easing="BounceOut"
+                        Direction="EndToStart"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource ShortLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Horizontal, Direction=EndToStart"/>
+
+        <ScrollView
+            Style="{DynamicResource ScrollViewStyle_i1}"
+            Orientation="Horizontal">
+
+            <StackLayout
+                Style="{DynamicResource StackLayoutStyle_i1}"
+                Orientation="Horizontal">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="7"
+                        Direction="EndToStart"
+                        Orientation="Horizontal"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource ShortLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+        
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Vertical, Direction=CircleStartToEnd"/>
+
+        <ScrollView Style="{DynamicResource ScrollViewStyle_i1}">
+
+            <StackLayout Style="{DynamicResource StackLayoutStyle_i1}">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="3.55"
+                        Direction="CircleStartToEnd"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource ShortLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Horizontal, Direction=CircleStartToEnd"/>
+
+        <ScrollView
+            Style="{DynamicResource ScrollViewStyle_i1}"
+            Orientation="Horizontal">
+
+            <StackLayout
+                Style="{DynamicResource StackLayoutStyle_i1}"
+                Orientation="Horizontal">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="7"
+                        Direction="CircleStartToEnd"
+                        Orientation="Horizontal"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource ShortLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+        
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Vertical, Direction=CircleEndToStart"/>
+
+        <ScrollView Style="{DynamicResource ScrollViewStyle_i1}">
+
+            <StackLayout Style="{DynamicResource StackLayoutStyle_i1}">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="3.55"
+                        Easing="BounceOut"
+                        Direction="CircleEndToStart"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource ShortLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Horizontal, Direction=CircleEndToStart"/>
+
+        <ScrollView
+            Style="{DynamicResource ScrollViewStyle_i1}"
+            Orientation="Horizontal">
+
+            <StackLayout
+                Style="{DynamicResource StackLayoutStyle_i1}"
+                Orientation="Horizontal">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="7"
+                        Direction="CircleEndToStart"
+                        Orientation="Horizontal"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource ShortLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Vertical, Direction=Bounce"/>
+
+        <ScrollView Style="{DynamicResource ScrollViewStyle_i1}">
+
+            <StackLayout Style="{DynamicResource StackLayoutStyle_i1}">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="3.55"
+                        Easing="BounceOut"
+                        Direction="Bounce"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource ShortLabelStyle_i1}"/>
+
+            </StackLayout>
+
+        </ScrollView>
+
+        <Label
+            Style="{DynamicResource LabelStyle_i1}"
+            Text="Orientation=Horizontal, Direction=Bounce"/>
+        
+        <ScrollView
+            Style="{DynamicResource ScrollViewStyle_i1}"
+            Orientation="Horizontal">
+
+            <StackLayout
+                Style="{DynamicResource StackLayoutStyle_i1}"
+                Orientation="Horizontal">
+
+                <StackLayout.Behaviors>
+
+                    <behaviors:MarqueeBehavior
+                        SecondsToScroll="7"
+                        Direction="Bounce"
+                        Orientation="Horizontal"/>
+
+                </StackLayout.Behaviors>
+
+                <Label Style="{DynamicResource ShortLabelStyle_i1}"/>
 
             </StackLayout>
 

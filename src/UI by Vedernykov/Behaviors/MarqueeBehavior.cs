@@ -7,6 +7,12 @@ namespace UI_by_Vedernykov.Behaviors
 {
     public class MarqueeBehavior : Behavior<VisualElement>
     {
+        private double _x = 0;
+        private double _y = 0;
+
+        private double _finishPositionX = 0;
+        private double _finishPositionY = 0;
+
         private bool _canStartTimer;
         private bool _isValidSizeView;
 
@@ -185,7 +191,10 @@ namespace UI_by_Vedernykov.Behaviors
 
         private bool IsValidSizeView()
         {
-            return _visualElementHeight > 0 && _parentHeight > 0 && _visualElementWidth > 0 && _parentWidth > 0;
+            return _visualElementHeight > 0
+                && _parentHeight > 0
+                && _visualElementWidth > 0
+                && _parentWidth > 0;
         }
 
         private void StartAnimationIfNeed()
@@ -196,27 +205,33 @@ namespace UI_by_Vedernykov.Behaviors
             }
         }
 
-        private void TranslateTo(double x, double y, double finishPositionX, double finishPositionY)
+        private void TryTranslateTo(double x, double y, double finishPositionX, double finishPositionY)
         {
-            var milliseconds = (uint)TimeSpan.FromSeconds(SecondsToScroll).TotalMilliseconds;
-
-            _visualElement.TranslateTo(x, y, milliseconds, Easing).ContinueWith((x) =>
+            try
             {
-                _visualElement.TranslationX = finishPositionX;
-                _visualElement.TranslationY = finishPositionY;
+                var milliseconds = (uint)TimeSpan.FromSeconds(SecondsToScroll).TotalMilliseconds;
 
-                if (RepeatCount > _repeatCount)
+                _visualElement.TranslateTo(x, y, milliseconds, Easing).ContinueWith((x) =>
                 {
-                    _repeatCount++;
-                }
+                    _visualElement.TranslationX = finishPositionX;
+                    _visualElement.TranslationY = finishPositionY;
 
-                if (NeedScrollToStartIfAnimationFinish && !CanRepeat())
-                {
-                    _visualElement.TranslateTo(0, 0, 250, Easing);
-                }
+                    if (RepeatCount > _repeatCount)
+                    {
+                        _repeatCount++;
+                    }
 
-                StartAnimationIfNeed();
-            });
+                    if (NeedScrollToStartIfAnimationFinish && !CanRepeat())
+                    {
+                        _visualElement.TranslateTo(0, 0, 250, Easing);
+                    }
+
+                    StartAnimationIfNeed();
+                });
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void StartAnimation()
@@ -225,62 +240,130 @@ namespace UI_by_Vedernykov.Behaviors
             {
                 if (_isValidSizeView)
                 {
-                    double x = 0;
-                    double y = 0;
-
-                    double finishPositionX = 0;
-                    double finishPositionY = 0;
-
                     if (Direction == EDirectionMove.StartToEnd)
                     {
                         if (Orientation == StackOrientation.Vertical)
                         {
-                            y = 0;
-                            finishPositionY -= _visualElementHeight - _parentHeight;
+                            if (_visualElementHeight > _parentHeight)
+                            {
+                                _y = _parentHeight - _visualElementHeight;
+                                _finishPositionY = 0;
+                            }
                         }
                         else
                         {
-                            x = 0;
-                            finishPositionX -= _visualElementWidth - _parentWidth;
+                            if (_visualElementWidth > _parentWidth)
+                            {
+                                _x = _parentWidth - _visualElementWidth;
+                                _finishPositionX = 0;
+                            }
                         }
                     }
                     else if (Direction == EDirectionMove.EndToStart)
                     {
                         if (Orientation == StackOrientation.Vertical)
                         {
-                            y -= _visualElementHeight - _parentHeight;
-                            finishPositionY = _parentHeight;
+                            if (_visualElementHeight > _parentHeight)
+                            {
+                                _y = 0;
+                                _finishPositionY = _parentHeight - _visualElementHeight;
+                            }
                         }
                         else
                         {
-                            x -= _visualElementWidth;
-                            finishPositionX = _parentWidth;
+                            if (_visualElementWidth > _parentWidth)
+                            {
+                                _x = 0;
+                                _finishPositionX = _parentWidth - _visualElementWidth;
+                            }
+                        }
+                    }
+                    else if (Direction == EDirectionMove.CircleStartToEnd)
+                    {
+                        if (Orientation == StackOrientation.Vertical)
+                        {
+                            if (_visualElementHeight > _parentHeight)
+                            {
+                                _y = _parentHeight;
+                                _finishPositionY = -_visualElementHeight;
+                            }
+                        }
+                        else
+                        {
+                            if (_visualElementWidth > _parentWidth)
+                            {
+                                _x = _parentWidth;
+                                _finishPositionX = -_visualElementWidth;
+                            }
+                        }
+                    }
+                    else if (Direction == EDirectionMove.CircleEndToStart)
+                    {
+                        if (Orientation == StackOrientation.Vertical)
+                        {
+                            if (_visualElementHeight > _parentHeight)
+                            {
+                                _y = -_visualElementHeight;
+                                _finishPositionY = _parentHeight;
+                            }
+                        }
+                        else
+                        {
+                            if (_visualElementWidth > _parentWidth)
+                            {
+                                _x = -_visualElementWidth;
+                                _finishPositionX = _parentWidth;
+                            }
                         }
                     }
                     else
                     {
                         if (Orientation == StackOrientation.Vertical)
                         {
-                            y -= _visualElementHeight;
-                            finishPositionY = _parentHeight;
+                            if (_visualElementHeight > _parentHeight)
+                            {
+                                if (_y == 0)
+                                {
+                                    _y = _finishPositionY = _parentHeight - _visualElementHeight;
+                                }
+                                else
+                                {
+                                    _y = _finishPositionY = 0;
+                                }
+                            }
                         }
                         else
                         {
-                            x -= _visualElementWidth;
-                            finishPositionX = _parentWidth;
+                            if (_visualElementWidth > _parentWidth)
+                            {
+                                if (_x == 0)
+                                {
+                                    _x = _finishPositionX = _parentWidth - _visualElementWidth;
+                                }
+                                else
+                                {
+                                    _x = _finishPositionX = 0;
+                                }
+                            }
                         }
                     }
 
-                    TranslateTo(x, y, finishPositionX, finishPositionY);
+                    TryTranslateTo(_x, _y, _finishPositionX, _finishPositionY);
                 }
                 else
                 {
-                    Device.StartTimer(TimeSpan.FromMilliseconds(250), () =>
+                    try
                     {
-                        StartAnimationIfNeed();
+                        Device.StartTimer(TimeSpan.FromMilliseconds(350), () =>
+                        {
+                            StartAnimationIfNeed();
 
-                        return false;
-                    });
+                            return false;
+                        });
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
             }
         }
