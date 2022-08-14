@@ -9,8 +9,8 @@ namespace UI_by_Vedernykov.Helpers.Process
         private readonly DateTime _creationUtcTime;
 
         public AOResult(
-            [CallerMemberName] string callerName = null,
-            [CallerFilePath] string callerFile = null,
+            [CallerMemberName] string? callerName = null,
+            [CallerFilePath] string? callerFile = null,
             [CallerLineNumber] int callerLineNumber = 0)
         {
             _creationUtcTime = DateTime.UtcNow;
@@ -26,21 +26,21 @@ namespace UI_by_Vedernykov.Helpers.Process
 
         public bool IsSuccess { get; private set; }
 
-        public Exception Exception { get; private set; }
+        public Exception? Exception { get; private set; }
 
-        public string ErrorId { get; private set; }
+        public string? ErrorId { get; private set; }
 
-        public string Message { get; private set; }
+        public string? Message { get; private set; }
 
-        public string CallerName { get; private set; }
+        public string? CallerName { get; private set; }
 
-        public string CallerFile { get; private set; }
+        public string? CallerFile { get; private set; }
 
         public int CallerLineNumber { get; private set; }
 
         public bool TrackingResult { get; set; } = true;
 
-        public IDictionary<int, string> AdditionalMessages { get; private set; }
+        public IDictionary<int, string?>? AdditionalMessages { get; private set; }
 
         #endregion
 
@@ -60,7 +60,7 @@ namespace UI_by_Vedernykov.Helpers.Process
             SetResult(true, null, null, null);
         }
 
-        public void SetAdditionalMessages(IDictionary<int, string> additionalMessages)
+        public void SetAdditionalMessages(IDictionary<int, string?> additionalMessages)
         {
             AdditionalMessages = additionalMessages;
         }
@@ -90,14 +90,15 @@ namespace UI_by_Vedernykov.Helpers.Process
             SetError("ArgumentNullException", $"argumentName: {argumentName}");
         }
 
-        public void SetError(string errorId, string message, Exception ex = null)
+        public void SetError(string errorId, string message, Exception? ex = null)
         {
             SetResult(false, errorId, message, ex);
         }
 
-        public void SetResult(bool isSuccess, string errorId, string message, Exception ex)
+        public void SetResult(bool isSuccess, string? errorId, string? message, Exception? ex)
         {
             var finishTime = DateTime.UtcNow;
+
             OperationTime = finishTime - _creationUtcTime;
             IsSuccess = isSuccess;
             ErrorId = errorId;
@@ -123,10 +124,12 @@ namespace UI_by_Vedernykov.Helpers.Process
 #endif
                 // Use analytics service when installed
                 //var analyticsService = App.Resolve<IAnalyticsService>();
-                var param = new Dictionary<string, string>();
-                param[nameof(CallerName)] = CallerName;
-                param[nameof(CallerFile)] = CallerFile;
-                param[nameof(CallerLineNumber)] = CallerLineNumber.ToString();
+                var param = new Dictionary<string, string?>
+                {
+                    [nameof(CallerName)] = CallerName,
+                    [nameof(CallerFile)] = CallerFile,
+                    [nameof(CallerLineNumber)] = CallerLineNumber.ToString(),
+                };
 
                 if (!string.IsNullOrEmpty(ErrorId))
                 {
@@ -156,14 +159,17 @@ namespace UI_by_Vedernykov.Helpers.Process
 
     public class AOResult<T> : AOResult
     {
-        public AOResult([CallerMemberName] string callerName = null, [CallerFilePath] string callerFile = null, [CallerLineNumber] int callerLineNumber = 0)
+        public AOResult(
+            [CallerMemberName] string? callerName = null,
+            [CallerFilePath] string? callerFile = null,
+            [CallerLineNumber] int callerLineNumber = 0)
             : base(callerName, callerFile, callerLineNumber)
         {
         }
 
         #region -- Public properties --
 
-        public T Result { get; private set; }
+        public T? Result { get; private set; }
 
         #endregion
 
@@ -172,24 +178,28 @@ namespace UI_by_Vedernykov.Helpers.Process
         public void MergeResult(T result, AOResult res)
         {
             Result = result;
+
             MergeResult(res);
         }
 
         public void SetSuccess(T result)
         {
             Result = result;
+
             SetSuccess();
         }
 
-        public void SetResult(T result, bool isSuccess, string errorId, string message, Exception ex = null)
+        public void SetResult(T result, bool isSuccess, string? errorId, string? message, Exception? ex = null)
         {
             Result = result;
+
             SetResult(isSuccess, errorId, message, ex);
         }
 
         public void SetFailure(T result)
         {
             Result = result;
+
             SetFailure();
         }
 
@@ -200,7 +210,7 @@ namespace UI_by_Vedernykov.Helpers.Process
     {
         #region -- Public properties --
 
-        public TStatus Status { get; private set; }
+        public TStatus? Status { get; private set; }
 
         #endregion
 
@@ -209,12 +219,14 @@ namespace UI_by_Vedernykov.Helpers.Process
         public void SetFailure(Exception ex, TStatus status)
         {
             Status = status;
+
             SetFailure(ex);
         }
 
         public void SetFailure(TStatus status)
         {
             Status = status;
+
             SetFailure();
         }
 

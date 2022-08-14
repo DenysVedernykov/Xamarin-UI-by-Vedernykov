@@ -8,8 +8,8 @@ namespace UI_by_Vedernykov.Helpers
     {
         public EPages State { get; set; }
 
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
-        public ICommand TapCommand { get; set; }
+        public ICommand? TapCommand { get; set; }
     }
 }

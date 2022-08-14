@@ -14,7 +14,7 @@ namespace UI_by_Vedernykov.Behaviors
 
         private VisualElement _element;
 
-        private LinearGradientBrush _gradientBrush;
+        private LinearGradientBrush _gradientBrush = new();
 
         #region -- Public properties --
 

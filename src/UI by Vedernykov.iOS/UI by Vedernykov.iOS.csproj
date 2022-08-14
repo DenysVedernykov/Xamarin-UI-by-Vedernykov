@@ -16,6 +16,11 @@
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <ProvisioningType>automatic</ProvisioningType>
   </PropertyGroup>
+  
+  <PropertyGroup>
+	<CodeAnalysisRuleSet>$(SolutionDir)\stylecop\StyleCopRuleSet.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+	
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>

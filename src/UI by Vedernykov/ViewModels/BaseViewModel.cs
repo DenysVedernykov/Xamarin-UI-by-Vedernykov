@@ -8,10 +8,6 @@ namespace UI_by_Vedernykov.ViewModels
 {
     public class BaseViewModel : BindableBase, IInitialize, IInitializeAsync, INavigationAware, IDestructible
     {
-        protected INavigationService _navigationService { get; }
-
-        protected bool IsInternetConnected => Connectivity.NetworkAccess == NetworkAccess.Internet;
-
         public BaseViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
@@ -21,6 +17,14 @@ namespace UI_by_Vedernykov.ViewModels
 
         private IPopupNavigation _popupNavigation;
         public IPopupNavigation PopupNavigation => _popupNavigation ??= App.Resolve<IPopupNavigation>();
+
+        #endregion
+
+        #region -- Protected properties --
+
+        protected INavigationService _navigationService { get; }
+
+        protected bool IsInternetConnected => Connectivity.NetworkAccess == NetworkAccess.Internet;
 
         #endregion
 

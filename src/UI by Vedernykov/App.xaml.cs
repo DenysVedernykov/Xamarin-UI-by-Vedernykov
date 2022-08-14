@@ -12,7 +12,7 @@ namespace UI_by_Vedernykov
 {
     public partial class App : PrismApplication
     {
-        public App(IPlatformInitializer initializer = null)
+        public App(IPlatformInitializer? initializer = null)
             : base(initializer)
         {
         }

@@ -64,13 +64,13 @@ namespace UI_by_Vedernykov.Controls
 
         #region -- Overrides --
 
-        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected override void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
 
             if (ShouldSetCursorPositionToEnd && propertyName is nameof(IsFocused) or nameof(Text) && IsFocused)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     CursorPosition = string.IsNullOrEmpty(Text)
                         ? 0

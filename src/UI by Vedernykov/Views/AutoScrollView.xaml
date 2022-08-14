@@ -26,7 +26,7 @@
 
                 <FormattedString>
                     <Span Text="START" TextColor="Red"/>
-                    <Span TextColor="White" Text=" dffgdf dfg dfgdf gd df  df gdfg df f dfg ddf gdf dfgd gdf gdf dfdfg dfgdf gd df  df gdfg df f dfg ddf gdf dfgd gdf gdf df dffgdf dfg dfgdf gd df  df gdfg df f dfg ddf gdf dfgd gdf gdf df "/>
+                    <Span TextColor="White" Text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "/>
                     <Span Text="END" TextColor="Red"/>
                 </FormattedString>
                 
@@ -328,7 +328,9 @@
 
         <ScrollView Style="{DynamicResource ScrollViewStyle_i1}">
 
-            <StackLayout Style="{DynamicResource StackLayoutStyle_i1}">
+            <StackLayout
+                Style="{DynamicResource StackLayoutStyle_i1}"
+                HeightRequest="20">
 
                 <StackLayout.Behaviors>
 
@@ -355,12 +357,13 @@
 
             <StackLayout
                 Style="{DynamicResource StackLayoutStyle_i1}"
+                WidthRequest="140"
                 Orientation="Horizontal">
 
                 <StackLayout.Behaviors>
 
                     <behaviors:MarqueeBehavior
-                        SecondsToScroll="7"
+                        SecondsToScroll="3.55"
                         Direction="StartToEnd"
                         Orientation="Horizontal"/>
 
@@ -378,7 +381,9 @@
 
         <ScrollView Style="{DynamicResource ScrollViewStyle_i1}">
 
-            <StackLayout Style="{DynamicResource StackLayoutStyle_i1}">
+            <StackLayout
+                Style="{DynamicResource StackLayoutStyle_i1}"
+                HeightRequest="20">
 
                 <StackLayout.Behaviors>
 
@@ -405,12 +410,13 @@
 
             <StackLayout
                 Style="{DynamicResource StackLayoutStyle_i1}"
+                WidthRequest="140"
                 Orientation="Horizontal">
 
                 <StackLayout.Behaviors>
 
                     <behaviors:MarqueeBehavior
-                        SecondsToScroll="7"
+                        SecondsToScroll="3.55"
                         Direction="EndToStart"
                         Orientation="Horizontal"/>
 
@@ -428,7 +434,9 @@
 
         <ScrollView Style="{DynamicResource ScrollViewStyle_i1}">
 
-            <StackLayout Style="{DynamicResource StackLayoutStyle_i1}">
+            <StackLayout
+                Style="{DynamicResource StackLayoutStyle_i1}"
+                HeightRequest="20">
 
                 <StackLayout.Behaviors>
 
@@ -454,12 +462,13 @@
 
             <StackLayout
                 Style="{DynamicResource StackLayoutStyle_i1}"
+                WidthRequest="140"
                 Orientation="Horizontal">
 
                 <StackLayout.Behaviors>
 
                     <behaviors:MarqueeBehavior
-                        SecondsToScroll="7"
+                        SecondsToScroll="3.55"
                         Direction="CircleStartToEnd"
                         Orientation="Horizontal"/>
 
@@ -477,7 +486,9 @@
 
         <ScrollView Style="{DynamicResource ScrollViewStyle_i1}">
 
-            <StackLayout Style="{DynamicResource StackLayoutStyle_i1}">
+            <StackLayout
+                Style="{DynamicResource StackLayoutStyle_i1}"
+                HeightRequest="20">
 
                 <StackLayout.Behaviors>
 
@@ -504,12 +515,13 @@
 
             <StackLayout
                 Style="{DynamicResource StackLayoutStyle_i1}"
+                WidthRequest="140"
                 Orientation="Horizontal">
 
                 <StackLayout.Behaviors>
 
                     <behaviors:MarqueeBehavior
-                        SecondsToScroll="7"
+                        SecondsToScroll="3.55"
                         Direction="CircleEndToStart"
                         Orientation="Horizontal"/>
 
@@ -527,7 +539,9 @@
 
         <ScrollView Style="{DynamicResource ScrollViewStyle_i1}">
 
-            <StackLayout Style="{DynamicResource StackLayoutStyle_i1}">
+            <StackLayout
+                Style="{DynamicResource StackLayoutStyle_i1}"
+                HeightRequest="20">
 
                 <StackLayout.Behaviors>
 
@@ -554,12 +568,13 @@
 
             <StackLayout
                 Style="{DynamicResource StackLayoutStyle_i1}"
+                WidthRequest="140"
                 Orientation="Horizontal">
 
                 <StackLayout.Behaviors>
 
                     <behaviors:MarqueeBehavior
-                        SecondsToScroll="7"
+                        SecondsToScroll="3.55"
                         Direction="Bounce"
                         Orientation="Horizontal"/>
 

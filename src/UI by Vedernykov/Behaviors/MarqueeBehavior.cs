@@ -20,9 +20,11 @@ namespace UI_by_Vedernykov.Behaviors
 
         private double _parentWidth;
         private double _visualElementWidth;
+        private double _visualElementWidthRequest;
 
         private double _parentHeight;
         private double _visualElementHeight;
+        private double _visualElementHeightRequest;
 
         private VisualElement _visualElement;
         private VisualElement _visualElementsParent;
@@ -144,6 +146,7 @@ namespace UI_by_Vedernykov.Behaviors
 
                 case nameof(_visualElement.Width):
                     _visualElementWidth = _visualElement.Width;
+                    _visualElementWidthRequest = _visualElement.WidthRequest;
 
                     _isValidSizeView = IsValidSizeView();
 
@@ -151,6 +154,7 @@ namespace UI_by_Vedernykov.Behaviors
 
                 case nameof(_visualElement.Height):
                     _visualElementHeight = _visualElement.Height;
+                    _visualElementHeightRequest = _visualElement.HeightRequest;
 
                     _isValidSizeView = IsValidSizeView();
 
@@ -240,112 +244,142 @@ namespace UI_by_Vedernykov.Behaviors
             {
                 if (_isValidSizeView)
                 {
-                    if (Direction == EDirectionMove.StartToEnd)
+                    var isOrientationVertical = Orientation == StackOrientation.Vertical;
+
+                    var isHeightVisualElementGreater = _visualElementHeight > _parentHeight;
+                    var isWidthVisualElementGreater = _visualElementWidth > _parentWidth;
+
+                    var offsetX = _parentWidth - _visualElementWidth;
+                    var offsetY = _parentHeight - _visualElementHeight;
+
+                    var widthRequest = _visualElementWidthRequest == -1
+                        ? _visualElementWidth
+                        : _visualElementWidthRequest;
+
+                    var heightRequest = _visualElementHeightRequest == -1
+                        ? _visualElementHeight
+                        : _visualElementHeightRequest;
+
+                    var offsetXRequest = _parentWidth - widthRequest;
+                    var offsetYRequest = _parentHeight - heightRequest;
+
+                    var offsetYIf = isHeightVisualElementGreater
+                        ? offsetY
+                        : offsetYRequest;
+
+                    var offsetXIf = isWidthVisualElementGreater
+                        ? offsetX
+                        : offsetXRequest;
+
+                    switch (Direction)
                     {
-                        if (Orientation == StackOrientation.Vertical)
-                        {
-                            if (_visualElementHeight > _parentHeight)
+                        case EDirectionMove.StartToEnd:
+                            if (isOrientationVertical)
                             {
-                                _y = _parentHeight - _visualElementHeight;
-                                _finishPositionY = 0;
+                                if (isHeightVisualElementGreater)
+                                {
+                                    _y = 0;
+                                    _finishPositionY = offsetY;
+                                }
+                                else
+                                {
+                                    _finishPositionY = 0;
+                                    _y = offsetYRequest;
+                                }
                             }
-                        }
-                        else
-                        {
-                            if (_visualElementWidth > _parentWidth)
+                            else
                             {
-                                _x = _parentWidth - _visualElementWidth;
-                                _finishPositionX = 0;
+                                if (isWidthVisualElementGreater)
+                                {
+                                    _x = 0;
+                                    _finishPositionX = offsetX;
+                                }
+                                else
+                                {
+                                    _finishPositionX = 0;
+                                    _x = offsetXRequest;
+                                }
                             }
-                        }
-                    }
-                    else if (Direction == EDirectionMove.EndToStart)
-                    {
-                        if (Orientation == StackOrientation.Vertical)
-                        {
-                            if (_visualElementHeight > _parentHeight)
+
+                            break;
+                        case EDirectionMove.EndToStart:
+                            if (isOrientationVertical)
                             {
-                                _y = 0;
-                                _finishPositionY = _parentHeight - _visualElementHeight;
+                                if (isHeightVisualElementGreater)
+                                {
+                                    _finishPositionY = 0;
+                                    _y = offsetYIf;
+                                }
+                                else
+                                {
+                                    _y = 0;
+                                    _finishPositionY = offsetYIf;
+                                }
                             }
-                        }
-                        else
-                        {
-                            if (_visualElementWidth > _parentWidth)
+                            else
                             {
-                                _x = 0;
-                                _finishPositionX = _parentWidth - _visualElementWidth;
+                                if (isWidthVisualElementGreater)
+                                {
+                                    _finishPositionX = 0;
+                                    _x = offsetXIf;
+                                }
+                                else
+                                {
+                                    _x = 0;
+                                    _finishPositionX = offsetXIf;
+                                }
                             }
-                        }
-                    }
-                    else if (Direction == EDirectionMove.CircleStartToEnd)
-                    {
-                        if (Orientation == StackOrientation.Vertical)
-                        {
-                            if (_visualElementHeight > _parentHeight)
+
+                            break;
+                        case EDirectionMove.CircleStartToEnd:
+                            if (isOrientationVertical)
                             {
                                 _y = _parentHeight;
-                                _finishPositionY = -_visualElementHeight;
+                                _finishPositionY = isHeightVisualElementGreater
+                                    ? -_visualElementHeight
+                                    : -heightRequest;
                             }
-                        }
-                        else
-                        {
-                            if (_visualElementWidth > _parentWidth)
+                            else
                             {
                                 _x = _parentWidth;
-                                _finishPositionX = -_visualElementWidth;
+                                _finishPositionX = isWidthVisualElementGreater
+                                    ? -_visualElementWidth
+                                    : -widthRequest;
                             }
-                        }
-                    }
-                    else if (Direction == EDirectionMove.CircleEndToStart)
-                    {
-                        if (Orientation == StackOrientation.Vertical)
-                        {
-                            if (_visualElementHeight > _parentHeight)
+
+                            break;
+                        case EDirectionMove.CircleEndToStart:
+                            if (isOrientationVertical)
                             {
-                                _y = -_visualElementHeight;
                                 _finishPositionY = _parentHeight;
+                                _y = isHeightVisualElementGreater
+                                    ? -_visualElementHeight
+                                    : -heightRequest;
                             }
-                        }
-                        else
-                        {
-                            if (_visualElementWidth > _parentWidth)
+                            else
                             {
-                                _x = -_visualElementWidth;
                                 _finishPositionX = _parentWidth;
+                                _x = isWidthVisualElementGreater
+                                    ? -_visualElementWidth
+                                    : -widthRequest;
                             }
-                        }
-                    }
-                    else
-                    {
-                        if (Orientation == StackOrientation.Vertical)
-                        {
-                            if (_visualElementHeight > _parentHeight)
+
+                            break;
+                        default:
+                            if (isOrientationVertical)
                             {
-                                if (_y == 0)
-                                {
-                                    _y = _finishPositionY = _parentHeight - _visualElementHeight;
-                                }
-                                else
-                                {
-                                    _y = _finishPositionY = 0;
-                                }
+                                _y = _finishPositionY = _y == 0
+                                    ? offsetYIf
+                                    : 0;
                             }
-                        }
-                        else
-                        {
-                            if (_visualElementWidth > _parentWidth)
+                            else
                             {
-                                if (_x == 0)
-                                {
-                                    _x = _finishPositionX = _parentWidth - _visualElementWidth;
-                                }
-                                else
-                                {
-                                    _x = _finishPositionX = 0;
-                                }
+                                _x = _finishPositionX = _x == 0
+                                    ? offsetXIf
+                                    : 0;
                             }
-                        }
+
+                            break;
                     }
 
                     TryTranslateTo(_x, _y, _finishPositionX, _finishPositionY);

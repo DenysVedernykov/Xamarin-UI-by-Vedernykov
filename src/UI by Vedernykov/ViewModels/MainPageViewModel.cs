@@ -13,7 +13,7 @@ namespace UI_by_Vedernykov.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
-        private ICommand _selectedMenuItemCommand;
+        private readonly ICommand _selectedMenuItemCommand;
 
         public MainPageViewModel(
             GradientViewViewModel gradientViewViewModel,
