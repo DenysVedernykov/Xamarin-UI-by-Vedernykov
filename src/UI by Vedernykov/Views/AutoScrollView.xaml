@@ -34,7 +34,7 @@
         </Style>
 
         <Style x:Key="LabelStyle_i1" TargetType="Label">
-            <Setter Property="TextColor" Value="{DynamicResource TextAndBackgroundColor_i1}"/>
+            <Setter Property="TextColor" Value="{DynamicResource TextAndBackgroundColor_i6}"/>
         </Style>
 
         <Style x:Key="ScrollViewStyle_i1" TargetType="ScrollView">
@@ -46,7 +46,6 @@
 
         <Style x:Key="StackLayoutStyle_i1" TargetType="StackLayout">
             <Setter Property="Padding" Value="0"/>
-            <Setter Property="BackgroundColor" Value="Green"/>
             <Setter Property="Spacing" Value="0"/>
         </Style>
 
@@ -104,7 +103,7 @@
                 <StackLayout.Behaviors>
 
                     <behaviors:MarqueeBehavior
-                        SecondsToScroll="7"
+                        SecondsToScroll="3.55"
                         Direction="StartToEnd"
                         Orientation="Horizontal"/>
 
@@ -154,7 +153,7 @@
                 <StackLayout.Behaviors>
 
                     <behaviors:MarqueeBehavior
-                        SecondsToScroll="7"
+                        SecondsToScroll="3.55"
                         Direction="EndToStart"
                         Orientation="Horizontal"/>
 
