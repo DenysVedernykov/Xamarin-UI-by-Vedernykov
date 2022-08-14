@@ -6,7 +6,7 @@
     xmlns:helpers="clr-namespace:UI_by_Vedernykov.Helpers"
     xmlns:viewmodels="clr-namespace:UI_by_Vedernykov.ViewModels"
     xmlns:pk="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    x:Class="UI_by_Vedernykov.Views.Mobile.LeftMenuView"
+    x:Class="UI_by_Vedernykov.Views.LeftMenuView"
     x:DataType="viewmodels:MainPageViewModel">
 
     <StackLayout.Background>

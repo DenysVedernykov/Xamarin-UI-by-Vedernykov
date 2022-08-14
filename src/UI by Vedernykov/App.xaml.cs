@@ -3,7 +3,6 @@ using Prism.Ioc;
 using Prism.Plugin.Popups;
 using Prism.Unity;
 using UI_by_Vedernykov.ViewModels;
-using UI_by_Vedernykov.ViewModels.Mobile;
 using UI_by_Vedernykov.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;

@@ -9,7 +9,7 @@
     xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     Spacing="50"
     BackgroundColor="{DynamicResource TextAndBackgroundColor_i6}"
-    x:Class="UI_by_Vedernykov.Views.Mobile.SetFocusOnEntryCompletedView">
+    x:Class="UI_by_Vedernykov.Views.SetFocusOnEntryCompletedView">
 
     <StackLayout.Resources>
 

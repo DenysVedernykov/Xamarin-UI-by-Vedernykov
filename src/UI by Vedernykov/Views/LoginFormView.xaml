@@ -1,141 +1,148 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<StackLayout
+<views:BaseContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:viewModels="clr-namespace:UI_by_Vedernykov.ViewModels"
-    Padding="25"
-    Spacing="40"
-    BackgroundColor="{DynamicResource TextAndBackgroundColor_i14}"
+    xmlns:views="clr-namespace:UI_by_Vedernykov.Views"
     x:Class="UI_by_Vedernykov.Views.LoginFormView"
     x:DataType="viewModels:LoginFormViewViewModel">
 
-    <StackLayout.Background>
+    <StackLayout
+        Padding="25"
+        Spacing="40"
+        BackgroundColor="{DynamicResource TextAndBackgroundColor_i14}">
 
-        <LinearGradientBrush
-            StartPoint="0, 0"
-            EndPoint="1, 1">
+        <StackLayout.Background>
 
-            <GradientStop
-                Color="#ff05cd"
-                Offset="0.0" />
+            <LinearGradientBrush
+                StartPoint="0, 0"
+                EndPoint="1, 1">
 
-            <GradientStop
-                Color="#313196"
-                Offset="1.0" />
+                <GradientStop
+                    Color="#ff05cd"
+                    Offset="0.0" />
 
-        </LinearGradientBrush>
+                <GradientStop
+                    Color="#313196"
+                    Offset="1.0" />
 
-    </StackLayout.Background>
+            </LinearGradientBrush>
 
-    <StackLayout.Triggers>
+        </StackLayout.Background>
 
-        <DataTrigger TargetType="StackLayout" Binding="{Binding IsRadialGradient}" Value="True">
+        <StackLayout.Triggers>
 
-            <Setter Property="Background">
-                <RadialGradientBrush Center="0.5, 0.5">
+            <DataTrigger TargetType="StackLayout" Binding="{Binding IsRadialGradient}" Value="True">
+
+                <Setter Property="Background">
+                    
+                    <RadialGradientBrush Center="0.5, 0.5">
+
+                        <GradientStop
+                            Color="#ff05cd"
+                            Offset="0.0" />
+
+                        <GradientStop
+                            Color="#313196"
+                            Offset="1.0" />
+
+                    </RadialGradientBrush>
+                    
+                </Setter>
+
+            </DataTrigger>
+
+        </StackLayout.Triggers>
+
+        <Button
+            Text="Turn"
+            TextColor="{DynamicResource TextAndBackgroundColor_i1}"
+            TextTransform="Uppercase"
+            VerticalOptions="Start"
+            HorizontalOptions="End"
+            Padding="0"
+            WidthRequest="50"
+            xct:CornerRadiusEffect.CornerRadius="25"
+            Command="{Binding TurnCommnad}">
+
+            <Button.Background>
+
+                <LinearGradientBrush
+                    StartPoint="0, 0"
+                    EndPoint="1, 1">
 
                     <GradientStop
-                        Color="#ff05cd"
-                        Offset="0.0" />
+                        Color="#51F1F2"
+                        Offset="0.1" />
 
                     <GradientStop
-                        Color="#313196"
+                        Color="#2F9BDF"
                         Offset="1.0" />
 
-                </RadialGradientBrush>
-            </Setter>
+                </LinearGradientBrush>
 
-        </DataTrigger>
+            </Button.Background>
 
-    </StackLayout.Triggers>
+        </Button>
 
-    <Button
-        Text="Turn"
-        TextColor="{DynamicResource TextAndBackgroundColor_i1}"
-        TextTransform="Uppercase"
-        VerticalOptions="Start"
-        HorizontalOptions="End"
-        Padding="0"
-        WidthRequest="50"
-        xct:CornerRadiusEffect.CornerRadius="25"
-        Command="{Binding TurnCommnad}">
+        <Grid VerticalOptions="EndAndExpand">
 
-        <Button.Background>
+            <Entry
+                TextColor="{DynamicResource TextAndBackgroundColor_i1}"
+                Placeholder="Name"
+                PlaceholderColor="{DynamicResource TextAndBackgroundColor_i1}"/>
 
-            <LinearGradientBrush
-                StartPoint="0, 0"
-                EndPoint="1, 1">
+            <BoxView
+                BackgroundColor="{DynamicResource TextAndBackgroundColor_i1}"
+                HeightRequest="1"
+                Margin="4, 36.5, 4, 7"/>
 
-                <GradientStop
-                    Color="#51F1F2"
-                    Offset="0.1" />
+        </Grid>
 
-                <GradientStop
-                    Color="#2F9BDF"
-                    Offset="1.0" />
+        <Grid>
 
-            </LinearGradientBrush>
+            <Entry
+                TextColor="{DynamicResource TextAndBackgroundColor_i1}"
+                Placeholder="Password"
+                PlaceholderColor="{DynamicResource TextAndBackgroundColor_i1}"/>
 
-        </Button.Background>
+            <BoxView
+                BackgroundColor="{DynamicResource TextAndBackgroundColor_i1}"
+                HeightRequest="1"
+                Margin="4, 36.5, 4, 7"/>
 
-    </Button>
+        </Grid>
 
-    <Grid VerticalOptions="EndAndExpand">
-
-        <Entry
+        <Button
+            Text="Log in"
             TextColor="{DynamicResource TextAndBackgroundColor_i1}"
-            Placeholder="Name"
-            PlaceholderColor="{DynamicResource TextAndBackgroundColor_i1}"/>
+            TextTransform="Uppercase"
+            VerticalOptions="StartAndExpand"
+            HorizontalOptions="Center"
+            WidthRequest="160"
+            xct:CornerRadiusEffect.CornerRadius="25">
 
-        <BoxView
-            BackgroundColor="{DynamicResource TextAndBackgroundColor_i1}"
-            HeightRequest="1"
-            Margin="4, 36.5, 4, 7"/>
+            <Button.Background>
 
-    </Grid>
+                <LinearGradientBrush
+                    StartPoint="0, 0"
+                    EndPoint="1, 1">
 
-    <Grid>
+                    <GradientStop
+                        Color="#e83f90"
+                        Offset="0.1" />
 
-        <Entry
-            TextColor="{DynamicResource TextAndBackgroundColor_i1}"
-            Placeholder="Password"
-            PlaceholderColor="{DynamicResource TextAndBackgroundColor_i1}"/>
+                    <GradientStop
+                        Color="#f34c64"
+                        Offset="1.0" />
 
-        <BoxView
-            BackgroundColor="{DynamicResource TextAndBackgroundColor_i1}"
-            HeightRequest="1"
-            Margin="4, 36.5, 4, 7"/>
+                </LinearGradientBrush>
 
-    </Grid>
+            </Button.Background>
 
-    <Button
-        Text="Log in"
-        TextColor="{DynamicResource TextAndBackgroundColor_i1}"
-        TextTransform="Uppercase"
-        VerticalOptions="StartAndExpand"
-        HorizontalOptions="Center"
-        WidthRequest="160"
-        xct:CornerRadiusEffect.CornerRadius="25">
+        </Button>
 
-        <Button.Background>
+    </StackLayout>
 
-            <LinearGradientBrush
-                StartPoint="0, 0"
-                EndPoint="1, 1">
-
-                <GradientStop
-                    Color="#e83f90"
-                    Offset="0.1" />
-
-                <GradientStop
-                    Color="#f34c64"
-                    Offset="1.0" />
-
-            </LinearGradientBrush>
-
-        </Button.Background>
-
-    </Button>
-
-</StackLayout>
+</views:BaseContentView>

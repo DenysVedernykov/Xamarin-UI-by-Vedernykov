@@ -5,7 +5,7 @@
     xmlns:viewmodels="clr-namespace:UI_by_Vedernykov.ViewModels"
     Padding="25"
     BackgroundColor="{DynamicResource TextAndBackgroundColor_i10}"
-    x:Class="UI_by_Vedernykov.Views.Mobile.AboutAppView"
+    x:Class="UI_by_Vedernykov.Views.AboutAppView"
     x:DataType="viewmodels:MainPageViewModel">
 
     <Label

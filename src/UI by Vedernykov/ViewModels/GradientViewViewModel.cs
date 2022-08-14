@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using UI_by_Vedernykov.Helpers;
 using Xamarin.Forms;
 
-namespace UI_by_Vedernykov.ViewModels.Mobile
+namespace UI_by_Vedernykov.ViewModels
 {
     public class GradientViewViewModel : BaseViewModel
     {

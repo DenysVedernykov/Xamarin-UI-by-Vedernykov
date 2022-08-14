@@ -7,13 +7,12 @@
     xmlns:enums="clr-namespace:UI_by_Vedernykov.ENums"
     xmlns:viewmodels="clr-namespace:UI_by_Vedernykov.ViewModels"
     xmlns:views="clr-namespace:UI_by_Vedernykov.Views"
-    xmlns:mobileViews="clr-namespace:UI_by_Vedernykov.Views.Mobile"
     x:Class="UI_by_Vedernykov.Views.MainPage"
     x:DataType="viewmodels:MainPageViewModel">
 
     <xct:SideMenuView State="{Binding StateSideMenu}">
 
-        <mobileViews:LeftMenuView
+        <views:LeftMenuView
             xct:SideMenuView.Position="LeftMenu"
             xct:SideMenuView.MenuAppearanceType="SlideIn"
             xct:SideMenuView.MenuWidthPercentage=".6"/>
@@ -23,15 +22,15 @@
             State="{Binding SelectedMenuItem.State}">
 
             <sc:StateCondition State="{x:Static enums:EPages.Main}">
-                <mobileViews:MainView/>
+                <views:MainView/>
             </sc:StateCondition>
 
             <sc:StateCondition State="{x:Static enums:EPages.SetFocusOnEntryCompleted}">
-                <mobileViews:SetFocusOnEntryCompletedView/>
+                <views:SetFocusOnEntryCompletedView/>
             </sc:StateCondition>
 
             <sc:StateCondition State="{x:Static enums:EPages.Gradients}">
-                <mobileViews:GradientView BindingContext="{Binding GradientViewViewModel}"/>
+                <views:GradientView BindingContext="{Binding GradientViewViewModel}"/>
             </sc:StateCondition>
 
             <sc:StateCondition State="{x:Static enums:EPages.VersionTracking}">
@@ -48,7 +47,7 @@
 
         </sc:StateContainer>
 
-        <mobileViews:AboutAppView
+        <views:AboutAppView
             xct:SideMenuView.Position="RightMenu"
             xct:SideMenuView.MenuAppearanceType="SlideInOut"
             xct:SideMenuView.MenuWidthPercentage="1"/>

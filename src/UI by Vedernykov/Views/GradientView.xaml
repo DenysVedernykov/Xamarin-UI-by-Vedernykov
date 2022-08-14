@@ -5,10 +5,10 @@
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:behaviors="clr-namespace:UI_by_Vedernykov.Behaviors"
     xmlns:helpers="clr-namespace:UI_by_Vedernykov.Helpers"
-    xmlns:mobileViewModels="clr-namespace:UI_by_Vedernykov.ViewModels.Mobile"
-    BackgroundColor="#1c1a32"
-    x:Class="UI_by_Vedernykov.Views.Mobile.GradientView"
-    x:DataType="mobileViewModels:GradientViewViewModel">
+    xmlns:viewModels="clr-namespace:UI_by_Vedernykov.ViewModels"
+    BackgroundColor="{DynamicResource TextAndBackgroundColor_i20}"
+    x:Class="UI_by_Vedernykov.Views.GradientView"
+    x:DataType="viewModels:GradientViewViewModel">
 
     <Grid
         ColumnDefinitions="0.5*, 0.5*"

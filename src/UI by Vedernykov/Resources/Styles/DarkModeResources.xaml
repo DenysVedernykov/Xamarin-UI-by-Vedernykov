@@ -36,6 +36,7 @@
     <Color x:Key="TextAndBackgroundColor_i17">#1b1b59</Color>
     <Color x:Key="TextAndBackgroundColor_i18">#212c6c</Color>
     <Color x:Key="TextAndBackgroundColor_i19">#565e8d</Color>
+    <Color x:Key="TextAndBackgroundColor_i20">#1c1a32</Color>
 
     <!--  Indications  -->
 

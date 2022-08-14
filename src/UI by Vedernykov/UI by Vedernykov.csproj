@@ -71,6 +71,29 @@
 		<OutputPath>bin\STAGE\netstandard2.0</OutputPath>
 		<DefineConstants>TRACE;STAGE;NETSTANDARD;NETSTANDARD2_0;</DefineConstants>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="Converters\**" />
+	  <Compile Remove="Effects\**" />
+	  <Compile Remove="Extensions\**" />
+	  <Compile Remove="Models\**" />
+	  <Compile Remove="Services\**" />
+	  <Compile Remove="ViewModels\Tablet\**" />
+	  <Compile Remove="Views\Tablet\**" />
+	  <EmbeddedResource Remove="Converters\**" />
+	  <EmbeddedResource Remove="Effects\**" />
+	  <EmbeddedResource Remove="Extensions\**" />
+	  <EmbeddedResource Remove="Models\**" />
+	  <EmbeddedResource Remove="Services\**" />
+	  <EmbeddedResource Remove="ViewModels\Tablet\**" />
+	  <EmbeddedResource Remove="Views\Tablet\**" />
+	  <None Remove="Converters\**" />
+	  <None Remove="Effects\**" />
+	  <None Remove="Extensions\**" />
+	  <None Remove="Models\**" />
+	  <None Remove="Services\**" />
+	  <None Remove="ViewModels\Tablet\**" />
+	  <None Remove="Views\Tablet\**" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Acr.UserDialogs" Version="7.2.0.564" />
@@ -93,23 +116,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="ViewModels\Tablet\" />
-		<Folder Include="Views\Tablet\" />
-		<Folder Include="Services\" />
-		<Folder Include="Models\" />
-		<Folder Include="Converters\" />
-		<Folder Include="Effects\" />
-		<Folder Include="Extensions\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Reference Include="Xamarin.iOS">
 	    <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\Xamarin.iOS\v1.0\Xamarin.iOS.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\Mobile\LeftMenuView.xaml.cs">
+	  <Compile Update="Views\LeftMenuView.xaml.cs">
 	    <DependentUpon>LeftMenuView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
@@ -127,19 +140,19 @@
 	  <EmbeddedResource Update="Views\LoginFormView.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Views\Mobile\AboutAppView.xaml">
+	  <EmbeddedResource Update="Views\AboutAppView.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Views\Mobile\GradientView.xaml">
+	  <EmbeddedResource Update="Views\GradientView.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Views\Mobile\LeftMenuView.xaml">
+	  <EmbeddedResource Update="Views\LeftMenuView.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Views\Mobile\MainView.xaml">
+	  <EmbeddedResource Update="Views\MainView.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Views\Mobile\SetFocusOnEntryCompletedView.xaml">
+	  <EmbeddedResource Update="Views\SetFocusOnEntryCompletedView.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Views\VersionTrackingView.xaml">

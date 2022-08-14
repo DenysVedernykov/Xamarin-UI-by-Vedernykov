@@ -2,11 +2,12 @@
 using Prism.Navigation;
 using Rg.Plugins.Popup.Contracts;
 using System.Threading.Tasks;
+using UI_by_Vedernykov.Interfaces;
 using Xamarin.Essentials;
 
 namespace UI_by_Vedernykov.ViewModels
 {
-    public class BaseViewModel : BindableBase, IInitialize, IInitializeAsync, INavigationAware, IDestructible
+    public class BaseViewModel : BindableBase, IInitialize, IInitializeAsync, INavigationAware, IDestructible, IPageActionsHandler
     {
         public BaseViewModel(INavigationService navigationService)
         {
@@ -60,6 +61,18 @@ namespace UI_by_Vedernykov.ViewModels
         #region -- IDestructible implementation --
 
         public virtual void Destroy()
+        {
+        }
+
+        #endregion
+
+        #region -- IPageActionsHandler implementation --
+
+        public virtual void OnAppearing()
+        {
+        }
+
+        public virtual void OnDisappearing()
         {
         }
 

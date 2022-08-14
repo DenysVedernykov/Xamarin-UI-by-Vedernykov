@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.CommunityToolkit.ObjectModel;
-using Xamarin.CommunityToolkit.UI.Views;
 
 namespace UI_by_Vedernykov.ViewModels
 {
@@ -12,6 +11,17 @@ namespace UI_by_Vedernykov.ViewModels
             : base(navigationService)
         {
         }
+
+        #region -- Overrides --
+
+        public override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            IsRadialGradient = false;
+        }
+
+        #endregion
 
         #region -- Public properties --
 

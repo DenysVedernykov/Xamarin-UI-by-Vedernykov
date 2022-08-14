@@ -1,8 +1,6 @@
-﻿using Xamarin.Forms;
-
-namespace UI_by_Vedernykov.Views
+﻿namespace UI_by_Vedernykov.Views
 {
-    public partial class LoginFormView : StackLayout
+    public partial class LoginFormView : BaseContentView
     {
         public LoginFormView()
         {
