@@ -42,6 +42,10 @@
                 <views:AutoScrollView/>
             </sc:StateCondition>
 
+            <sc:StateCondition State="{x:Static enums:EPages.LoginForm}">
+                <views:LoginFormView BindingContext="{Binding LoginFormViewViewModel}"/>
+            </sc:StateCondition>
+
         </sc:StateContainer>
 
         <mobileViews:AboutAppView

@@ -18,11 +18,13 @@ namespace UI_by_Vedernykov.ViewModels
         public MainPageViewModel(
             GradientViewViewModel gradientViewViewModel,
             VersionTrackingViewViewModel versionTrackingViewViewModel,
+            LoginFormViewViewModel loginFormViewViewModel,
             INavigationService navigationService)
             : base(navigationService)
         {
             GradientViewViewModel = gradientViewViewModel;
             VersionTrackingViewViewModel = versionTrackingViewViewModel;
+            LoginFormViewViewModel = loginFormViewViewModel;
 
             _selectedMenuItemCommand = new AsyncCommand(OnSelectedMenuItemCommand, allowsMultipleExecutions: false);
             _showAboutAppPageCommand = new AsyncCommand(OnShowAboutAppPageCommand, allowsMultipleExecutions: false);
@@ -59,6 +61,12 @@ namespace UI_by_Vedernykov.ViewModels
                     Title = "Auto Scroll",
                     TapCommand = _selectedMenuItemCommand,
                 },
+                new()
+                {
+                    State = EPages.LoginForm,
+                    Title = "Login Form",
+                    TapCommand = _selectedMenuItemCommand,
+                },
             };
 
             SelectedMenuItem = _menuItems.FirstOrDefault();
@@ -70,6 +78,8 @@ namespace UI_by_Vedernykov.ViewModels
         public GradientViewViewModel GradientViewViewModel { get; set; }
 
         public VersionTrackingViewViewModel VersionTrackingViewViewModel { get; set; }
+
+        public LoginFormViewViewModel LoginFormViewViewModel { get; set; }
 
         private MenuItem _selectedMenuItem;
         public MenuItem SelectedMenuItem

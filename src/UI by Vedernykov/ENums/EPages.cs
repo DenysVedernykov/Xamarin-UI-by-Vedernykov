@@ -8,5 +8,6 @@
         Gradients,
         VersionTracking,
         AutoScroll,
+        LoginForm,
     }
 }
