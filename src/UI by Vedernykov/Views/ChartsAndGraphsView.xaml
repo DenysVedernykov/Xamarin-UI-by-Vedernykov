@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:BaseContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:UI_by_Vedernykov.ViewModels"
+    xmlns:views="clr-namespace:UI_by_Vedernykov.Views"
+    BackgroundColor="{DynamicResource TextAndBackgroundColor_i14}"
+    x:Class="UI_by_Vedernykov.Views.ChartsAndGraphsView"
+    x:DataType="viewmodels:ChartsAndGraphsViewViewModel">
+
+    <StackLayout>
+
+        <Label
+            Text="ChartsAndGraphsView!"
+            TextColor="{DynamicResource TextAndBackgroundColor_i1}"/>
+        
+    </StackLayout>
+    
+</views:BaseContentView>

@@ -18,12 +18,14 @@ namespace UI_by_Vedernykov.ViewModels
             GradientViewViewModel gradientViewViewModel,
             VersionTrackingViewViewModel versionTrackingViewViewModel,
             LoginFormViewViewModel loginFormViewViewModel,
+            ChartsAndGraphsViewViewModel chartsAndGraphsViewViewModel,
             INavigationService navigationService)
             : base(navigationService)
         {
             GradientViewViewModel = gradientViewViewModel;
             VersionTrackingViewViewModel = versionTrackingViewViewModel;
             LoginFormViewViewModel = loginFormViewViewModel;
+            ChartsAndGraphsViewViewModel = chartsAndGraphsViewViewModel;
 
             _selectedMenuItemCommand = new AsyncCommand(OnSelectedMenuItemCommand, allowsMultipleExecutions: false);
             _showAboutAppPageCommand = new AsyncCommand(OnShowAboutAppPageCommand, allowsMultipleExecutions: false);
@@ -66,6 +68,12 @@ namespace UI_by_Vedernykov.ViewModels
                     Title = "Login Form",
                     TapCommand = _selectedMenuItemCommand,
                 },
+                new()
+                {
+                    State = EPages.ChartsAndGraphs,
+                    Title = "Charts & Graphs",
+                    TapCommand = _selectedMenuItemCommand,
+                },
             };
 
             SelectedMenuItem = _menuItems.FirstOrDefault();
@@ -79,6 +87,8 @@ namespace UI_by_Vedernykov.ViewModels
         public VersionTrackingViewViewModel VersionTrackingViewViewModel { get; set; }
 
         public LoginFormViewViewModel LoginFormViewViewModel { get; set; }
+
+        public ChartsAndGraphsViewViewModel ChartsAndGraphsViewViewModel { get; set; }
 
         private MenuItem _selectedMenuItem;
         public MenuItem SelectedMenuItem

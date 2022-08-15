@@ -38,6 +38,7 @@ namespace UI_by_Vedernykov
             containerRegistry.RegisterSingleton<GradientViewViewModel>();
             containerRegistry.RegisterSingleton<VersionTrackingViewViewModel>();
             containerRegistry.RegisterSingleton<LoginFormViewViewModel>();
+            containerRegistry.RegisterSingleton<ChartsAndGraphsViewViewModel>();
         }
 
         protected override async void OnInitialized()

@@ -9,5 +9,6 @@
         VersionTracking,
         AutoScroll,
         LoginForm,
+        ChartsAndGraphs,
     }
 }
