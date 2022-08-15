@@ -2,18 +2,93 @@
 <views:BaseContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
     xmlns:viewmodels="clr-namespace:UI_by_Vedernykov.ViewModels"
     xmlns:views="clr-namespace:UI_by_Vedernykov.Views"
     BackgroundColor="{DynamicResource TextAndBackgroundColor_i14}"
     x:Class="UI_by_Vedernykov.Views.ChartsAndGraphsView"
     x:DataType="viewmodels:ChartsAndGraphsViewViewModel">
 
-    <StackLayout>
-
-        <Label
-            Text="ChartsAndGraphsView!"
-            TextColor="{DynamicResource TextAndBackgroundColor_i1}"/>
+    <views:BaseContentView.Resources>
         
-    </StackLayout>
+        <Style x:Key="LabelStyle_i1" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource TextAndBackgroundColor_i1}"/>
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+        
+    </views:BaseContentView.Resources>
+    
+    <ScrollView>
+        
+        <StackLayout
+            Spacing="20"
+            Margin="25"
+            Padding="0, 0, 0, 25">
+
+            <Label
+                Text="Charts and Graphs"
+                TextColor="{DynamicResource TextAndBackgroundColor_i11}"
+                FontSize="Large"
+                Margin="0, 0, 0, 15"/>
+
+            <Label
+                Style="{DynamicResource LabelStyle_i1}"
+                Text="BarChart"/>
+            
+            <charts:ChartView
+                Chart="{Binding BarChart}"
+                HeightRequest="280"/>
+
+            <Label
+                Style="{DynamicResource LabelStyle_i1}"
+                Text="DonutChart"/>
+
+            <charts:ChartView
+                Chart="{Binding DonutChart}"
+                HeightRequest="280"/>
+
+            <Label
+                Style="{DynamicResource LabelStyle_i1}"
+                Text="LineChart"/>
+
+            <charts:ChartView
+                Chart="{Binding LineChart}"
+                HeightRequest="280"/>
+
+            <Label
+                Style="{DynamicResource LabelStyle_i1}"
+                Text="PieChart"/>
+
+            <charts:ChartView
+                Chart="{Binding PieChart}"
+                HeightRequest="280"/>
+
+            <Label
+                Style="{DynamicResource LabelStyle_i1}"
+                Text="PointChart"/>
+
+            <charts:ChartView
+                Chart="{Binding PointChart}"
+                HeightRequest="280"/>
+
+            <Label
+                Style="{DynamicResource LabelStyle_i1}"
+                Text="RadarChart"/>
+
+            <charts:ChartView
+                Chart="{Binding RadarChart}"
+                HeightRequest="280"/>
+
+            <Label
+                Style="{DynamicResource LabelStyle_i1}"
+                Text="RadialGaugeChart"/>
+
+            <charts:ChartView
+                Chart="{Binding RadialGaugeChart}"
+                HeightRequest="280"/>
+
+        </StackLayout>
+        
+    </ScrollView>
     
 </views:BaseContentView>
