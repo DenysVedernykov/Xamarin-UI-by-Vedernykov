@@ -32,7 +32,7 @@ namespace UI_by_Vedernykov.ViewModels
             set => SetProperty(ref _isRadialGradient, value);
         }
 
-        private ICommand? _turnCommand;
+        private readonly ICommand? _turnCommand;
         public ICommand TurnCommnad => _turnCommand ?? new AsyncCommand(OnTurnCommandAsync, allowsMultipleExecutions: false);
 
         #endregion

@@ -71,28 +71,9 @@
 		<OutputPath>bin\STAGE\netstandard2.0</OutputPath>
 		<DefineConstants>TRACE;STAGE;NETSTANDARD;NETSTANDARD2_0;</DefineConstants>
 	</PropertyGroup>
+
 	<ItemGroup>
-	  <Compile Remove="Converters\**" />
-	  <Compile Remove="Effects\**" />
-	  <Compile Remove="Extensions\**" />
-	  <Compile Remove="Models\**" />
-	  <Compile Remove="Services\**" />
-	  <Compile Remove="ViewModels\Tablet\**" />
-	  <Compile Remove="Views\Tablet\**" />
-	  <EmbeddedResource Remove="Converters\**" />
-	  <EmbeddedResource Remove="Effects\**" />
-	  <EmbeddedResource Remove="Extensions\**" />
-	  <EmbeddedResource Remove="Models\**" />
-	  <EmbeddedResource Remove="Services\**" />
-	  <EmbeddedResource Remove="ViewModels\Tablet\**" />
-	  <EmbeddedResource Remove="Views\Tablet\**" />
-	  <None Remove="Converters\**" />
-	  <None Remove="Effects\**" />
-	  <None Remove="Extensions\**" />
-	  <None Remove="Models\**" />
-	  <None Remove="Services\**" />
-	  <None Remove="ViewModels\Tablet\**" />
-	  <None Remove="Views\Tablet\**" />
+	  <EmbeddedResource Include="Resources\Images\refresh.png" />
 	</ItemGroup>
 
 	<ItemGroup>

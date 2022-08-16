@@ -2,7 +2,9 @@
 <views:BaseContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    xmlns:helpers="clr-namespace:UI_by_Vedernykov.Helpers"
     xmlns:viewmodels="clr-namespace:UI_by_Vedernykov.ViewModels"
     xmlns:views="clr-namespace:UI_by_Vedernykov.Views"
     BackgroundColor="{DynamicResource TextAndBackgroundColor_i14}"
@@ -31,62 +33,44 @@
                 FontSize="Large"
                 Margin="0, 0, 0, 15"/>
 
-            <Label
-                Style="{DynamicResource LabelStyle_i1}"
-                Text="BarChart"/>
+            <StackLayout BindableLayout.ItemsSource="{Binding Charts}">
+
+                <BindableLayout.ItemTemplate>
+
+                    <DataTemplate x:DataType="helpers:ChartItem">
+
+                        <StackLayout
+                            Spacing="20"
+                            Margin="0, 0, 0, 20">
+
+                            <StackLayout Orientation="Horizontal">
+
+                                <Label
+                                    Style="{DynamicResource LabelStyle_i1}"
+                                    Text="{Binding Title}"/>
+
+                                <Image
+                                    Source="{xct:ImageResource Id=UI_by_Vedernykov.Resources.Images.refresh.png}"
+                                    HorizontalOptions="EndAndExpand"
+                                    xct:TouchEffect.AnimationDuration="250"
+                                    xct:TouchEffect.PressedRotation="360"
+                                    xct:TouchEffect.Command="{Binding RefreshChartCommand}"
+                                    xct:TouchEffect.CommandParameter="{Binding index}"/>
+
+                            </StackLayout>
+
+                            <charts:ChartView
+                                Chart="{Binding Chart}"
+                                HeightRequest="280"/>
+                            
+                        </StackLayout>
+                        
+                    </DataTemplate>
+                    
+                </BindableLayout.ItemTemplate>
+
+            </StackLayout>
             
-            <charts:ChartView
-                Chart="{Binding BarChart}"
-                HeightRequest="280"/>
-
-            <Label
-                Style="{DynamicResource LabelStyle_i1}"
-                Text="DonutChart"/>
-
-            <charts:ChartView
-                Chart="{Binding DonutChart}"
-                HeightRequest="280"/>
-
-            <Label
-                Style="{DynamicResource LabelStyle_i1}"
-                Text="LineChart"/>
-
-            <charts:ChartView
-                Chart="{Binding LineChart}"
-                HeightRequest="280"/>
-
-            <Label
-                Style="{DynamicResource LabelStyle_i1}"
-                Text="PieChart"/>
-
-            <charts:ChartView
-                Chart="{Binding PieChart}"
-                HeightRequest="280"/>
-
-            <Label
-                Style="{DynamicResource LabelStyle_i1}"
-                Text="PointChart"/>
-
-            <charts:ChartView
-                Chart="{Binding PointChart}"
-                HeightRequest="280"/>
-
-            <Label
-                Style="{DynamicResource LabelStyle_i1}"
-                Text="RadarChart"/>
-
-            <charts:ChartView
-                Chart="{Binding RadarChart}"
-                HeightRequest="280"/>
-
-            <Label
-                Style="{DynamicResource LabelStyle_i1}"
-                Text="RadialGaugeChart"/>
-
-            <charts:ChartView
-                Chart="{Binding RadialGaugeChart}"
-                HeightRequest="280"/>
-
         </StackLayout>
         
     </ScrollView>

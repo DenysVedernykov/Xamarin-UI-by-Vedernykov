@@ -3,6 +3,11 @@ using Prism.Navigation;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using UI_by_Vedernykov.Helpers;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace UI_by_Vedernykov.ViewModels
 {
@@ -24,66 +29,35 @@ namespace UI_by_Vedernykov.ViewModels
             new("December", SKColor.Parse("#97A69D")),
         };
 
+        private ICommand _refreshChartCommand;
+
         public ChartsAndGraphsViewViewModel(INavigationService navigationService)
             : base(navigationService)
         {
+            _refreshChartCommand = new AsyncCommand<int>(OnRefreshChartCommandAsync, allowsMultipleExecutions: false);
+
             InitCharts();
         }
 
         #region -- Public properties --
 
-        private Chart _barChart;
-        public Chart BarChart
+        private List<ChartItem> _charts;
+        public List<ChartItem> Charts
         {
-            get => _barChart;
-            set => SetProperty(ref _barChart, value);
-        }
-
-        private Chart _donutChart;
-        public Chart DonutChart
-        {
-            get => _donutChart;
-            set => SetProperty(ref _donutChart, value);
-        }
-
-        private Chart _lineChart;
-        public Chart LineChart
-        {
-            get => _lineChart;
-            set => SetProperty(ref _lineChart, value);
-        }
-
-        private Chart _pieChart;
-        public Chart PieChart
-        {
-            get => _pieChart;
-            set => SetProperty(ref _pieChart, value);
-        }
-
-        private Chart _pointChart;
-        public Chart PointChart
-        {
-            get => _pointChart;
-            set => SetProperty(ref _pointChart, value);
-        }
-
-        private Chart _radarChart;
-        public Chart RadarChart
-        {
-            get => _radarChart;
-            set => SetProperty(ref _radarChart, value);
-        }
-
-        private Chart _radialGaugeChart;
-        public Chart RadialGaugeChart
-        {
-            get => _radialGaugeChart;
-            set => SetProperty(ref _radialGaugeChart, value);
+            get => _charts;
+            set => SetProperty(ref _charts, value);
         }
 
         #endregion
 
         #region -- Private helpers --
+
+        private Task OnRefreshChartCommandAsync(int index)
+        {
+            _charts[index].Chart.Entries = GenerateChartEntriesData();
+
+            return Task.CompletedTask;
+        }
 
         private List<ChartEntry> GenerateChartEntriesData()
         {
@@ -94,7 +68,7 @@ namespace UI_by_Vedernykov.ViewModels
 
             for (int i = 0; i < 12; i++)
             {
-                entries.Add(new ChartEntry(value = random.Next(100, 700))
+                entries.Add(new ChartEntry(value = random.Next(-300, 700))
                 {
                     Label = pairMonthColor[i].Key,
                     ValueLabel = value.ToString(),
@@ -107,46 +81,115 @@ namespace UI_by_Vedernykov.ViewModels
 
         private void InitCharts()
         {
-            _barChart = new BarChart()
-            {
-                Entries = GenerateChartEntriesData(),
-                LabelTextSize = 42,
-            };
+            int i = 0;
 
-            _donutChart = new DonutChart()
+            _charts = new()
             {
-                Entries = GenerateChartEntriesData(),
-                LabelTextSize = 42,
-            };
-
-            _lineChart = new LineChart()
-            {
-                Entries = GenerateChartEntriesData(),
-                LabelTextSize = 42,
-            };
-
-            _pieChart = new PieChart()
-            {
-                Entries = GenerateChartEntriesData(),
-                LabelTextSize = 42,
-            };
-
-            _pointChart = new PointChart()
-            {
-                Entries = GenerateChartEntriesData(),
-                LabelTextSize = 42,
-            };
-
-            _radarChart = new RadarChart()
-            {
-                Entries = GenerateChartEntriesData(),
-                LabelTextSize = 42,
-            };
-
-            _radialGaugeChart = new RadialGaugeChart()
-            {
-                Entries = GenerateChartEntriesData(),
-                LabelTextSize = 42,
+                new()
+                {
+                    Title = "BarChart",
+                    Chart = new BarChart()
+                    {
+                        Entries = GenerateChartEntriesData(),
+                        LabelTextSize = 42,
+                    },
+                    index = i++,
+                    RefreshChartCommand = _refreshChartCommand,
+                },
+                new()
+                {
+                    Title = "DonutChart",
+                    Chart = new DonutChart()
+                    {
+                        Entries = GenerateChartEntriesData(),
+                        LabelTextSize = 42,
+                    },
+                    index = i++,
+                    RefreshChartCommand = _refreshChartCommand,
+                },
+                new()
+                {
+                    Title = "LineChart, LineMode = None",
+                    Chart = new LineChart()
+                    {
+                        Entries = GenerateChartEntriesData(),
+                        LabelTextSize = 42,
+                        LineSize = 8,
+                        LineMode = LineMode.None,
+                    },
+                    index = i++,
+                    RefreshChartCommand = _refreshChartCommand,
+                },
+                new()
+                {
+                    Title = "LineChart, LineMode = Spline",
+                    Chart = new LineChart()
+                    {
+                        Entries = GenerateChartEntriesData(),
+                        LabelTextSize = 42,
+                        LineSize = 8,
+                        LineMode = LineMode.Spline,
+                    },
+                    index = i++,
+                    RefreshChartCommand = _refreshChartCommand,
+                },
+                new()
+                {
+                    Title = "LineChart, LineMode = Straight",
+                    Chart = new LineChart()
+                    {
+                        Entries = GenerateChartEntriesData(),
+                        LabelTextSize = 42,
+                        LineSize = 8,
+                        LineMode = LineMode.Straight,
+                    },
+                    index = i++,
+                    RefreshChartCommand = _refreshChartCommand,
+                },
+                new()
+                {
+                    Title = "PieChart",
+                    Chart = new PieChart()
+                    {
+                        Entries = GenerateChartEntriesData(),
+                        LabelTextSize = 42,
+                    },
+                    index = i++,
+                    RefreshChartCommand = _refreshChartCommand,
+                },
+                new()
+                {
+                    Title = "PointChart",
+                    Chart = new PointChart()
+                    {
+                        Entries = GenerateChartEntriesData(),
+                        LabelTextSize = 42,
+                    },
+                    index = i++,
+                    RefreshChartCommand = _refreshChartCommand,
+                },
+                new()
+                {
+                    Title = "RadarChart",
+                    Chart = new RadarChart()
+                    {
+                        Entries = GenerateChartEntriesData(),
+                        LabelTextSize = 42,
+                    },
+                    index = i++,
+                    RefreshChartCommand = _refreshChartCommand,
+                },
+                new()
+                {
+                    Title = "RadialGaugeChart",
+                    Chart = new RadialGaugeChart()
+                    {
+                        Entries = GenerateChartEntriesData(),
+                        LabelTextSize = 42,
+                    },
+                    index = i++,
+                    RefreshChartCommand = _refreshChartCommand,
+                },
             };
         }
 
