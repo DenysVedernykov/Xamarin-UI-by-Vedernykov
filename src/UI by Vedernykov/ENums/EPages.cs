@@ -10,5 +10,6 @@
         AutoScroll,
         LoginForm,
         ChartsAndGraphs,
+        FirebaseRealtimeDatabase,
     }
 }

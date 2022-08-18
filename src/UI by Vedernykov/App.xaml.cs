@@ -39,6 +39,7 @@ namespace UI_by_Vedernykov
             containerRegistry.RegisterSingleton<VersionTrackingViewViewModel>();
             containerRegistry.RegisterSingleton<LoginFormViewViewModel>();
             containerRegistry.RegisterSingleton<ChartsAndGraphsViewViewModel>();
+            containerRegistry.RegisterSingleton<FirebaseRealtimeDatabaseViewViewModel>();
         }
 
         protected override async void OnInitialized()

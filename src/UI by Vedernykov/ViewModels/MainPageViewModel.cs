@@ -19,6 +19,7 @@ namespace UI_by_Vedernykov.ViewModels
             VersionTrackingViewViewModel versionTrackingViewViewModel,
             LoginFormViewViewModel loginFormViewViewModel,
             ChartsAndGraphsViewViewModel chartsAndGraphsViewViewModel,
+            FirebaseRealtimeDatabaseViewViewModel firebaseRealtimeDatabaseViewViewModel,
             INavigationService navigationService)
             : base(navigationService)
         {
@@ -26,6 +27,7 @@ namespace UI_by_Vedernykov.ViewModels
             VersionTrackingViewViewModel = versionTrackingViewViewModel;
             LoginFormViewViewModel = loginFormViewViewModel;
             ChartsAndGraphsViewViewModel = chartsAndGraphsViewViewModel;
+            FirebaseRealtimeDatabaseViewViewModel = firebaseRealtimeDatabaseViewViewModel;
 
             _selectedMenuItemCommand = new AsyncCommand(OnSelectedMenuItemCommand, allowsMultipleExecutions: false);
             _showAboutAppPageCommand = new AsyncCommand(OnShowAboutAppPageCommand, allowsMultipleExecutions: false);
@@ -74,6 +76,12 @@ namespace UI_by_Vedernykov.ViewModels
                     Title = "Charts & Graphs",
                     TapCommand = _selectedMenuItemCommand,
                 },
+                new()
+                {
+                    State = EPages.FirebaseRealtimeDatabase,
+                    Title = "Firebase Realtime Database",
+                    TapCommand = _selectedMenuItemCommand,
+                },
             };
 
             SelectedMenuItem = _menuItems.FirstOrDefault();
@@ -89,6 +97,8 @@ namespace UI_by_Vedernykov.ViewModels
         public LoginFormViewViewModel LoginFormViewViewModel { get; set; }
 
         public ChartsAndGraphsViewViewModel ChartsAndGraphsViewViewModel { get; set; }
+
+        public FirebaseRealtimeDatabaseViewViewModel FirebaseRealtimeDatabaseViewViewModel { get; set; }
 
         private MenuItem _selectedMenuItem;
         public MenuItem SelectedMenuItem

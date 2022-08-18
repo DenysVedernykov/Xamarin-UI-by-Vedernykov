@@ -49,6 +49,10 @@
                 <views:ChartsAndGraphsView BindingContext="{Binding ChartsAndGraphsViewViewModel}"/>
             </sc:StateCondition>
 
+            <sc:StateCondition State="{x:Static enums:EPages.FirebaseRealtimeDatabase}">
+                <views:FirebaseRealtimeDatabaseView BindingContext="{Binding FirebaseRealtimeDatabaseViewViewModel}"/>
+            </sc:StateCondition>
+
         </sc:StateContainer>
 
         <views:AboutAppView

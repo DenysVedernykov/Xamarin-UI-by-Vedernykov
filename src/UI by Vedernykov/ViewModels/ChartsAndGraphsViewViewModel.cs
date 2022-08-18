@@ -3,7 +3,6 @@ using Prism.Navigation;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using UI_by_Vedernykov.Helpers;

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:BaseContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:UI_by_Vedernykov.ViewModels"
+    xmlns:views="clr-namespace:UI_by_Vedernykov.Views"
+    x:Class="UI_by_Vedernykov.Views.FirebaseRealtimeDatabaseView"
+    x:DataType="viewmodels:FirebaseRealtimeDatabaseViewViewModel">
+
+    <StackLayout>
+        <Label Text="Firebase" />
+
+        <Button
+            Text="Add user"
+            Command="{Binding AddUserCommnad}"/>
+    </StackLayout>
+    
+</views:BaseContentView>

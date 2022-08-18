@@ -78,6 +78,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Acr.UserDialogs" Version="7.2.0.564" />
+		<PackageReference Include="FirebaseAuthentication.net" Version="3.7.2" />
+		<PackageReference Include="FirebaseDatabase.net" Version="4.0.7" />
 		<PackageReference Include="Microcharts" Version="0.9.5.9" />
 		<PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
 		<PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.5.1" />
@@ -121,6 +123,9 @@
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Views\ChartsAndGraphsView.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Views\FirebaseRealtimeDatabaseView.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Views\LoginFormView.xaml">

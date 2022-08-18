@@ -4,6 +4,8 @@
     {
         public static class API
         {
+            public const string FIREBASE_HOST_URL = "https://xamarin-ui-by-vedernykov-default-rtdb.europe-west1.firebasedatabase.app/";
+            public const string FIREBASE_API_KEY = "AIzaSyCGEMRv72MCk3lytxLfeTvMYSK2PuwRb7s";
 #if RELEASE
             public const string HOST_URL = "http://127.0.0.1";
 #elif STAGE
